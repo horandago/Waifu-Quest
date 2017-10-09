@@ -1,12 +1,14 @@
 class Player
-	attr_reader :name, :hp
+	attr_accessor :name, :hp, :gp, :exp
 
 	MAX_HP = 10
+	
 	
 	def initialize(name)
 		@name = name
 		@hp = MAX_HP
 		@exp = 0
+		@gp = 70
 	end
 
 	def alive?

@@ -23,6 +23,7 @@ $player = Player.new(name)
 class Game
 
 def initialize
+	$inventory = Inventory.new
 	play_game
 end
 
@@ -30,14 +31,15 @@ def play_game
 while $player.alive?
 	puts "What do you want to do?"
 	puts "----------"
-	puts "Fight\nShop"
+	puts "Fight\nShop\nItems"
 	puts "----------"
 	ans = gets.chomp.downcase
-	until ans == "fight" || ans == "shop"
+	until ans == "fight" || ans == "shop" || ans == "items"
 		puts "Please type that correctly"
 		ans = gets.chomp.downcase
 	end
 	case ans
+		when "items" then $inventory.list_items
 		when "shop" then
 			$shopkeeper.speak
 		when "fight" then

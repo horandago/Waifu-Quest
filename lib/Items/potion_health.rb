@@ -3,7 +3,8 @@ require_relative '../items.rb'
 class Potion_hp < Item
 	def initialize
 		super
-		@is_usable = true
+		@is_item = true
+		
 	end
 
 	def self.use
