@@ -8,7 +8,7 @@ class Player
 		@name = name
 		@hp = MAX_HP
 		@exp = 0
-		@gp = 70
+		@gp = 100
 	end
 
 	def alive?
@@ -29,6 +29,15 @@ class Player
 		@exp += gain
 		puts "You gained #{gain} exp!"
 	end
+
+	def equip_weapon(weapon)
+			if weapon.is_weapon?
+				puts "Weapon is weapon"
+			else
+				puts "probably a syntax error"
+		end
+	end	
+
 end
 
 class Mage < Player
@@ -36,5 +45,4 @@ class Mage < Player
 	def use_mp(amount)
 		@mp -= amount
 	end
-
 end

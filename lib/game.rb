@@ -17,7 +17,7 @@ puts "
 			[########[]______________________________________________________________>
          			\\>
 "
-puts "What is your name?"
+anim("What is your name?")
 name = gets.chomp.downcase
 $player = Player.new(name)
 class Game
@@ -29,7 +29,7 @@ end
 
 def play_game
 while $player.alive?
-	puts "What do you want to do?"
+	anim("What do you want to do?")
 	puts "----------"
 	puts "Fight\nShop\nItems"
 	puts "----------"
@@ -49,9 +49,7 @@ while $player.alive?
 end
 unless $player.alive?
 	abort("you be dead")
-	
 end
-
 end
 
 end

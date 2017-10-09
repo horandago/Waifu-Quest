@@ -13,11 +13,15 @@ def add_item(item)
 end
 
 def list_items
+	if @items.empty?
+		puts "Your inventory is empty!"
+	else
 	puts "\n"
 	counts = Hash.new(0)
 	@items.each { |name| counts[name] += 1 }
-	counts.each { |k,v| print "#{k} x#{v}"}
+	counts.each { |k,v| print "#{k} (#{v})"}
 	print "\n"
+	end
 end
 
 end

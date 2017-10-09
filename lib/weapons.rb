@@ -1,0 +1,3 @@
+class Weapons
+
+end

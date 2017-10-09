@@ -8,7 +8,8 @@ class Shopkeeper < Npc
 	end
 
 	def speak
-		puts "Hello #{$player.name}!\nWhat are you looking for today?"
+		anim("Hello #{$player.name}!\nWhat are you looking for today?")
+		loop do
 		puts "----------"
 		puts "Potion - #{POTION_COST}gp"
 		puts "Bronze Sword - #{SWORD_COST}gp"
@@ -22,18 +23,19 @@ class Shopkeeper < Npc
 	
 		case ans
 		when 'Exit'
-			puts "Shopkeeper: Goodbye, young adventurer!"
+			anim("Shopkeeper: Goodbye, young adventurer!")
 			return true
 		when 'Potion' 	
 			if $player.gp >= 10
-				puts "You purchase the potion for #{POTION_COST}gp"
-				$inventory.add_item('potion')
+				anim("You purchase the potion for #{POTION_COST}gp")
+				$inventory.add_item('Potion')
 				$player.gp -= 10
 			else
-				puts "Shopkeeper: You're too poor to buy a..potion? Begone, peasant!"
+				anim("Shopkeeper: You're too poor to buy a..potion? Begone, peasant!")
 			end
 		end	
-		puts "You purchased the #{ans}"
+		anim("You purchased the #{ans}")
+	end
 	end
 end
 
