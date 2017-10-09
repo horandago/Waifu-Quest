@@ -1,5 +1,5 @@
 class Monster
-	attr_reader :hp
+	attr_reader :hp, :name, :attack
 	def initialize
 	end
 
@@ -14,9 +14,9 @@ class Monster
 
 	def fight
 		
-		
 	while $player.alive?
 		puts "You encounter the #{@name}!"
+		puts "HP: #{$player.hp} | #{self.name}: #{self.hp}"
 		puts "What do you want to do?"
 		puts "----\nfight\n----"
 		ans = gets.chomp.downcase
@@ -27,19 +27,9 @@ class Monster
 			$player.exp(10)
 			return true
 		end 	
-		$player.hurt(1)
+		$player.hurt(self.attack)
 end	
 end
 end
 
-class Harpy < Monster
-	def initialize
-		super
-		@hp = 5
-		@name = "Harpy"
-end
-end
-
-$harpy = Harpy.new
-$monster = Monster.new
 

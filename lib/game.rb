@@ -1,4 +1,8 @@
-Dir["./*"].each { |file| require file }
+Dir["*.rb"].each { |file| require_relative file }
+Dir["Monsters/*.rb"].each { |file| require_relative file }
+Dir["Npc/*.rb"].each { |file| require_relative file }
+Dir["Item/*.rb"].each { |file| require_relative file }
+
 
 system("clear")
 puts "
@@ -16,7 +20,6 @@ puts "
 puts "What is your name?"
 name = gets.chomp.downcase
 $player = Player.new(name)
-
 class Game
 
 def initialize
@@ -30,12 +33,15 @@ while $player.alive?
 	puts "Fight\nShop"
 	puts "----------"
 	ans = gets.chomp.downcase
-	until ans == "fight"
+	until ans == "fight" || ans == "shop"
 		puts "Please type that correctly"
 		ans = gets.chomp.downcase
 	end
 	case ans
+		when "shop" then
+			$shopkeeper.speak
 		when "fight" then
+			$harpy = Harpy.new
 			$harpy.fight
 	end
 end
