@@ -2,6 +2,7 @@ Dir["*.rb"].each { |file| require_relative file }
 Dir["Monsters/*.rb"].each { |file| require_relative file }
 Dir["Npc/*.rb"].each { |file| require_relative file }
 Dir["Item/*.rb"].each { |file| require_relative file }
+Dir["Weapons/*.rb"].each { |file| require_relative file }
 
 
 system("clear")

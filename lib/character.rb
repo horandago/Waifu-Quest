@@ -1,18 +1,23 @@
 class Player
-	attr_accessor :name, :hp, :gp, :exp
+	attr_reader :name 
+	attr_accessor :hp, :gp, :exp, :weapon
 
 	MAX_HP = 10
-	
-	
+		
 	def initialize(name)
 		@name = name
 		@hp = MAX_HP
 		@exp = 0
 		@gp = 100
+		@weapon = $bronze_sword
 	end
 
 	def alive?
 		@hp > 0
+	end
+
+	def attack
+		@weapon.send(:dmg)
 	end
 
 	def hurt(amount)
@@ -32,9 +37,10 @@ class Player
 
 	def equip_weapon(weapon)
 			if weapon.is_weapon?
-				puts "Weapon is weapon"
+				@weapon = "$#{weapon}"
+				puts "You equip #{weapon}"
 			else
-				puts "probably a syntax error"
+				puts "You can't wield a #{weapon} you dingus!"
 		end
 	end	
 

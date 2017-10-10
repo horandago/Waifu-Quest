@@ -21,7 +21,7 @@ class Monster
 		ans = gets.chomp.downcase
 		case ans
 		when "fight"
-			self.hurt(1)
+			self.hurt($player.attack)
 			puts "#{self.name} attacks you!"
 			if self.hp < 1
 				anim("You defeated the #{self.name.capitalize}!")

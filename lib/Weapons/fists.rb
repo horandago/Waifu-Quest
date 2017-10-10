@@ -1,4 +1,4 @@
-class Fists < Weapon
+class Fists < Weapons
 	:is_weapon
 	def initialize
 		super
