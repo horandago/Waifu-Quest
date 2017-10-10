@@ -34,7 +34,6 @@ class Player
 		@exp += gain
 		puts "You gained #{gain} exp!"
 	end
-
 	def equip_weapon(weapon)
 			if weapon.is_weapon?
 				@weapon = "$#{weapon}"
@@ -42,7 +41,7 @@ class Player
 			else
 				puts "You can't wield a #{weapon} you dingus!"
 		end
-	end	
+	end
 
 end
 

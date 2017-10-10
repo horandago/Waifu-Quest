@@ -29,12 +29,19 @@ class Shopkeeper < Npc
 			if $player.gp >= 10
 				anim("You purchase the potion for #{POTION_COST}gp")
 				$inventory.add_item('Potion')
-				$player.gp -= 10
+				$player.gp -= POTION_COST
 			else
 				anim("Shopkeeper: You're too poor to buy a..potion? Begone, peasant!")
 			end
+		when 'Bronze sword'
+      if $player.gp >= 50
+        anim("You purchase the bronze sword for #{SWORD_COST}gp")
+        $inventory.add_equipment('Bronze sword')
+        $player.gp -= SWORD_COST
+      else
+        anim("Shopkeeper: Take your peasant money elsewhere!")
+      end
 		end	
-		anim("You purchased the #{ans}")
 	end
 	end
 end

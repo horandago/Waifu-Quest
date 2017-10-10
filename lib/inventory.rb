@@ -1,7 +1,8 @@
 class Inventory
-
+	attr_accessor :equipment, :items
 def initialize
 	@items = Array.new
+	@equipment = ["Bronze sword"]
 end
 
 def use_item(item)
@@ -10,6 +11,10 @@ end
 
 def add_item(item)
 		@items.push(item)
+end
+
+def add_equipment(equipment)
+	@equipment.push(equipment)
 end
 
 def list_items
@@ -22,6 +27,19 @@ def list_items
 	counts.each { |k,v| print "#{k} (#{v})"}
 	print "\n"
 	end
+end
+
+def list_equipment
+	if @equipment.empty?
+    puts "You have no equipment!"
+  else
+  puts "\n"
+  counts = Hash.new(0)
+  @equipment.each { |name| counts[name] += 1 }
+  counts.each { |k,v| print "#{k} (#{v})"}
+  print "\n"
+  end
+
 end
 
 end

@@ -3,7 +3,7 @@ class Bronze_sword < Weapons
 	
 	def initialize
 		super
-		@dmg_hi = 3
+		@dmg_hi = 4
 		@dmg_lo = 1
 	end
 
