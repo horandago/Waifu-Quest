@@ -9,7 +9,7 @@ class Player
 		@hp = MAX_HP
 		@exp = 0
 		@gp = 100
-		@weapon = $bronze_sword
+		@weapon = nil
 	end
 
 	def alive?
@@ -34,16 +34,24 @@ class Player
 		@exp += gain
 		puts "You gained #{gain} exp!"
 	end
+
 	def equip_weapon(weapon)
-			if weapon.is_weapon?
-				@weapon = "$#{weapon}"
-				puts "You equip #{weapon}"
-			else
-				puts "You can't wield a #{weapon} you dingus!"
-		end
+		weapons = Hash.new
+		$inventory.equipment.each {|obj| weapons[obj] = obj.to_s}
+		weapons.each { |k,v| if weapon == k.to_s.downcase
+			$inventory.equipment.push(@weapon) if @weapon != nil	
+			$inventory.equipment.delete(k)
+			@weapon = k
+			end
+			}		
+	end
+
+	def info
+		puts "Weapon: #{@weapon.inspect}"
 	end
 
 end
+
 
 class Mage < Player
 	

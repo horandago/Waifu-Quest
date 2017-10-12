@@ -21,7 +21,7 @@ puts "
 anim("What is your name?")
 name = gets.chomp.downcase
 $player = Player.new(name)
-puts $bronze_sword.is_weapon
+
 class Game
 
 def initialize
@@ -36,11 +36,12 @@ while $player.alive?
 	puts "Fight\nShop\nItems"
 	puts "----------"
 	ans = gets.chomp.downcase
-	until ans == "fight" || ans == "shop" || ans == "items" || ans == "equip"
+	until ans == "fight" || ans == "shop" || ans == "items" || ans == "equip" || ans == "info"
 		puts "Please type that correctly"
 		ans = gets.chomp.downcase
 	end
 	case ans
+		when "info" then $player.info
 		when "items" then $inventory.list_items
 		when "shop" then
 			$shopkeeper.speak
@@ -50,19 +51,12 @@ while $player.alive?
 		when "equip" then
 			$inventory.list_equipment
 			anim("What do you want to equip?")
-			equip = gets.chomp.downcase.capitalize!
+			equip = gets.chomp.downcase
 			case equip
 				when "exit" then return true
 				else
-					if $inventory.equipment.include? equip
-					anim("You wield the #{equip}!")
-					equip = "$#{equip.downcase.tr!(" ","_")}"
-					equip.to_sym
-					$player.weapon = equip
-					else
-						anim("You do not have a #{equip}")
-					end
-			end
+					$player.equip_weapon(equip)	
+		end
 	end
 end
 unless $player.alive?

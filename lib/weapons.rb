@@ -1,6 +1,11 @@
 class Weapons
 	attr_reader :is_weapon
-	def equip(equip)
-		$player.weapon = equip
+	def to_s
+		"#{@name}"
 	end
+
+	def dmg
+		rand(@dmg_lo...@dmg_hi)
+	end
+	
 end

@@ -4,7 +4,7 @@ class Shopkeeper < Npc
 			POTION_COST = 10
 			SWORD_COST = 50
 	def initialize
-			@@shop_list = ['Potion', 'Bronze sword', 'Exit']
+			@@shop_list = ['Potion', 'Bronze sword', 'Mallet', 'Exit']
 	end
 
 	def speak
@@ -36,11 +36,14 @@ class Shopkeeper < Npc
 		when 'Bronze sword'
       if $player.gp >= 50
         anim("You purchase the bronze sword for #{SWORD_COST}gp")
-        $inventory.add_equipment('Bronze sword')
+        $inventory.equipment.push(Bronze_sword.new)
         $player.gp -= SWORD_COST
       else
         anim("Shopkeeper: Take your peasant money elsewhere!")
       end
+		when 'Mallet'
+			anim("You buy a mallet m9")
+			$inventory.equipment.push(Mallet.new)
 		end	
 	end
 	end
