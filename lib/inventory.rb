@@ -28,7 +28,7 @@ def list_items
 	puts "\n"
 	counts = Hash.new(0)
 	@items.each { |name| counts[name] += 1 }
-	counts.each { |k,v| print "#{k.to_s} (#{v})"}
+	counts.each { |k,v| print "#{k.to_s} (#{v}) "}
 	print "\n"
 	end
 end
@@ -40,7 +40,7 @@ def list_equipment
   puts "\n"
   counts = Hash.new(0)
   @equipment.each { |name| counts[name] += 1 }
-  counts.each { |k,v| print "#{k.to_s} (#{v})"}
+  counts.each { |k,v| print "#{k.to_s} (#{v}) "}
   print "\n"
   end
 

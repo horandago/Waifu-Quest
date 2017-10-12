@@ -2,9 +2,10 @@ require_relative '../npc.rb'
 
 class Shopkeeper < Npc
 			POTION_COST = 10
-			SWORD_COST = 50
+			SWORD_COST = 40
+			MAIL_COST = 50
 	def initialize
-			@@shop_list = ['Potion', 'Bronze sword', 'Mallet', 'Exit']
+			@@shop_list = ['Potion', 'Bronze sword', 'Chainmail', 'Exit']
 	end
 
 	def speak
@@ -13,6 +14,7 @@ class Shopkeeper < Npc
 		puts "----------"
 		puts "Potion - #{POTION_COST}gp"
 		puts "Bronze Sword - #{SWORD_COST}gp"
+		puts "Chainmail - #{MAIL_COST}gp"
 		puts "Exit"
 		puts "----------"
 		ans = gets.chomp.downcase.capitalize!
@@ -34,18 +36,24 @@ class Shopkeeper < Npc
 				anim("Shopkeeper: You're too poor to buy a..potion? Begone, peasant!")
 			end
 		when 'Bronze sword'
-      if $player.gp >= 50
+      if $player.gp >= 40
         anim("You purchase the bronze sword for #{SWORD_COST}gp")
         $inventory.equipment.push(Bronze_sword.new)
         $player.gp -= SWORD_COST
       else
         anim("Shopkeeper: Take your peasant money elsewhere!")
       end
-		when 'Mallet'
-			anim("You buy a mallet m9")
-			$inventory.equipment.push(Mallet.new)
-		end	
-	end
+		when 'Chainmail'
+      if $player.gp >= 50
+        anim("You purchase the chainmail for #{MAIL_COST}gp")
+        $inventory.equipment.push(Chainmail.new)
+        $player.gp -= MAIL_COST
+      else
+        anim("Shopkeeper: Take your peasant money elsewhere!")
+      end
+
+		end
+		end
 	end
 end
 

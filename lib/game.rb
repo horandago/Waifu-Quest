@@ -3,6 +3,7 @@ Dir["Monsters/*.rb"].each { |file| require_relative file }
 Dir["Npc/*.rb"].each { |file| require_relative file }
 Dir["Item/*.rb"].each { |file| require_relative file }
 Dir["Weapons/*.rb"].each { |file| require_relative file }
+Dir["Armour/*.rb"].each { |file| require_relative file }
 
 
 system("clear")
@@ -31,31 +32,32 @@ end
 
 def play_game
 while $player.alive?
+	@choices = ["Fight", "Shop", "Inventory", "Equip", "Character"]
 	anim("What do you want to do?")
 	puts "----------"
-	puts "Fight\nShop\nItems"
+	puts @choices
 	puts "----------"
-	ans = gets.chomp.downcase
-	until ans == "fight" || ans == "shop" || ans == "items" || ans == "equip" || ans == "info"
+	ans = gets.chomp.downcase.capitalize!
+	until @choices.include? ans
 		puts "Please type that correctly"
-		ans = gets.chomp.downcase
+		ans = gets.chomp.downcase.capitalize!
 	end
 	case ans
-		when "info" then $player.info
-		when "items" then $inventory.list_items
-		when "shop" then
+		when "Character" then $player.info
+		when "Inventory" then $inventory.list_items
+		when "Shop" then
 			$shopkeeper.speak
-		when "fight" then
+		when "Fight" then
 			$harpy = Harpy.new
 			$harpy.fight
-		when "equip" then
+		when "Equip" then
 			$inventory.list_equipment
 			anim("What do you want to equip?")
 			equip = gets.chomp.downcase
 			case equip
 				when "exit" then return true
 				else
-					$player.equip_weapon(equip)	
+					$player.equip(equip)	
 		end
 	end
 end

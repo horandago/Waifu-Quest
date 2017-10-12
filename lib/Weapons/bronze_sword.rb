@@ -1,5 +1,4 @@
 class Bronze_sword < Weapons
-	:is_weapon
 	
 	def initialize
 		super
