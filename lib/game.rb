@@ -1,7 +1,7 @@
 Dir["*.rb"].each { |file| require_relative file }
 Dir["Monsters/*.rb"].each { |file| require_relative file }
 Dir["Npc/*.rb"].each { |file| require_relative file }
-Dir["Item/*.rb"].each { |file| require_relative file }
+Dir["Items/*.rb"].each { |file| require_relative file }
 Dir["Weapons/*.rb"].each { |file| require_relative file }
 Dir["Armour/*.rb"].each { |file| require_relative file }
 
@@ -45,20 +45,21 @@ while $player.alive?
 	case ans
 		when "Character" then $player.info
 		when "Inventory" then $inventory.list_items
+			puts "exit"
+			anim("Use an item?")
+			ans = gets.chomp.downcase
+			$inventory.use_item(ans)
 		when "Shop" then
 			$shopkeeper.speak
 		when "Fight" then
 			$harpy = Harpy.new
 			$harpy.fight
 		when "Equip" then
-			$inventory.list_equipment
 			anim("What do you want to equip?")
+			$inventory.list_equipment
+			puts "exit"
 			equip = gets.chomp.downcase
-			case equip
-				when "exit" then return true
-				else
-					$player.equip(equip)	
-		end
+			$player.equip(equip)
 	end
 end
 unless $player.alive?

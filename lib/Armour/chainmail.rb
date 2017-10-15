@@ -3,7 +3,7 @@ class Chainmail < Armour
 	def initialize
 		super
 		@name = "Chainmail"
-		@defence = 0
+		@defence = 2
 	end
 end
 

@@ -1,5 +1,4 @@
 class Bare_fists < Weapons
-	:is_weapon
 	def initialize
 		super
 		@dmg_hi = 2

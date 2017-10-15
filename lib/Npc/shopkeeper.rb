@@ -30,7 +30,7 @@ class Shopkeeper < Npc
 		when 'Potion' 	
 			if $player.gp >= 10
 				anim("You purchase the potion for #{POTION_COST}gp")
-				$inventory.add_item('Potion')
+				$inventory.add_item(Potion.new)
 				$player.gp -= POTION_COST
 			else
 				anim("Shopkeeper: You're too poor to buy a..potion? Begone, peasant!")

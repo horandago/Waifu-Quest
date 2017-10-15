@@ -1,9 +1,12 @@
 
 class Items
-	attr_reader :is_item
-	attr_reader :is_armor
-	attr_reader :is_weapon
+	attr_reader :is_usable
 	def initialize
+		@is_usable = true
+	end
+
+	def to_s
+		"#{@name}"
 	end
 
 end

@@ -1,16 +1,15 @@
 class Player
 	attr_reader :name 
-	attr_accessor :hp, :gp, :exp, :weapon
-
-	MAX_HP = 10
+	attr_accessor :hp, :gp, :exp, :weapon, :max_hp
 		
 	def initialize(name)
 		@name = name
-		@hp = MAX_HP
+		@max_hp = 10
+		@hp = 10
 		@exp = 0
 		@gp = 100
 		@weapon = $bare_fists
-		@armour = nil
+		@armour = $shirt
 	end
 
 	def alive?
@@ -31,8 +30,14 @@ class Player
 	end
 
 	def heal(amount)
-		@hp += amount
-		@hp - [@hp, MAX_HP].min
+		if @hp + amount > @max_hp
+			diff = @max_hp - @hp
+			@hp = @max_hp
+			anim("You gain #{diff} HP!")
+		else
+			@hp += amount
+			anim("You gain #{amount} HP!")
+		end
 	end
 
 	def exp(gain)

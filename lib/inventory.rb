@@ -2,11 +2,20 @@ class Inventory
 	attr_accessor :equipment, :items
 def initialize
 	@items = Array.new
-	@equipment = []
+	@equipment = Array.new
 end
 
 def use_item(item)
-	@items.delete_at(@items.index(item) || @items.length)
+	thing = Hash.new
+	$inventory.items.each {|obj| thing[obj] = obj.to_s}
+	thing.each { |k,v| if k.is_usable
+		if item == k.to_s.downcase
+			k.use
+			$inventory.items.delete(k)
+			break
+		end 
+	end
+	}
 end
 
 def to_s
@@ -27,7 +36,7 @@ def list_items
 	else
 	puts "\n"
 	counts = Hash.new(0)
-	@items.each { |name| counts[name] += 1 }
+	@items.each { |name| counts[name.to_s] += 1 }
 	counts.each { |k,v| print "#{k.to_s} (#{v}) "}
 	print "\n"
 	end
@@ -39,7 +48,7 @@ def list_equipment
   else
   puts "\n"
   counts = Hash.new(0)
-  @equipment.each { |name| counts[name] += 1 }
+  @equipment.each { |name| counts[name.to_s] += 1 }
   counts.each { |k,v| print "#{k.to_s} (#{v}) "}
   print "\n"
   end
