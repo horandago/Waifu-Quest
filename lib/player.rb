@@ -51,24 +51,21 @@ class Player
 		
 		equip.each { |k,v| if k.is_weapon
 			if item == k.to_s.downcase
-			$inventory.equipment.push(@weapon) if @weapon != nil	
-			$inventory.equipment.delete(k)
-			@weapon = k
-			anim("You equip the #{@weapon.to_s}")
-			end
+				$inventory.equipment.push(@weapon) if @weapon != nil	
+				$inventory.equipment.delete(k)
+				@weapon = k
+				anim("You equip the #{@weapon.to_s}")
+				end
 			end
 			if k.is_armour
 				if item == k.to_s.downcase
-      $inventory.equipment.push(@armour) if @armour != nil
-      $inventory.equipment.delete(k)
-      @armour = k
-			anim("You put on the #{@armour.to_s}")
-      end
-      end
-
-			
-			}
-				
+      				$inventory.equipment.push(@armour) if @armour != nil
+      				$inventory.equipment.delete(k)
+      				@armour = k
+					anim("You put on the #{@armour.to_s}")
+      			end
+      		end
+		}
 	end
 
 	def to_s

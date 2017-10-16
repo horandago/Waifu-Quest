@@ -43,33 +43,31 @@ class Shopkeeper < Npc
 					anim("Shopkeeper: You're too poor to buy a..potion? Begone, peasant!")
 				end
 			when 'Bronze sword'
-      	if $player.gp >= 40
-        	puts "You purchase the bronze sword for #{SWORD_COST}gp!"
-        	$inventory.equipment.push(Bronze_sword.new)
-        	$player.gp -= SWORD_COST
-      	else
-        	anim("Shopkeeper: Take your peasant money elsewhere!")
-      	end
+      			if $player.gp >= 40
+        			puts "You purchase the bronze sword for #{SWORD_COST}gp!"
+        			$inventory.add_item(Bronze_sword.new)
+        			$player.gp -= SWORD_COST
+      			else
+        			anim("Shopkeeper: Take your peasant money elsewhere!")
+      			end
 			when 'Chainmail'
-      	if $player.gp >= 50
-        	puts "You purchase the chainmail for #{MAIL_COST}gp!"
-        	$inventory.equipment.push(Chainmail.new)
-        	$player.gp -= MAIL_COST
-      	else
-      	  anim("Shopkeeper: Take your peasant money elsewhere!")
-      	end
-
+      			if $player.gp >= 50
+        			puts "You purchase the chainmail for #{MAIL_COST}gp!"
+        			$inventory.add_item(Chainmail.new)
+        			$player.gp -= MAIL_COST
+      			else
+      	  		anim("Shopkeeper: Take your peasant money elsewhere!")
+      			end
 			end
-
-	elsif ans == "sell"
-		$inventory.list_all_items_price
-		anim("Which item will you sell?:")
-		ans = gets.chomp.downcase
-		$inventory.sell(ans)
-	elsif ans == "exit"
-		break
+		elsif ans == "sell"
+			$inventory.list_all_items_price
+			anim("Which item will you sell?:")
+			ans = gets.chomp.downcase
+			$inventory.sell(ans)
+		elsif ans == "exit"
+			break
+		end
 	end
-end
 end
 end
 

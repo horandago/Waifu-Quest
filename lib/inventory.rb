@@ -23,11 +23,11 @@ def to_s
 end
 
 def add_item(item)
+	if item.is_item
 		@items.push(item)
-end
-
-def add_equipment(equipment)
-	@equipment.push(equipment)
+	elsif item.is_equipment
+		@equipment.push(item)
+	end
 end
 
 def list_items
@@ -44,13 +44,13 @@ end
 
 def list_equipment
 	if @equipment.empty?
-    puts "You have no equipment!"
-  else
-  puts "\n"
-  counts = Hash.new(0)
-  @equipment.each { |name| counts[name.to_s] += 1 }
-  counts.each { |k,v| print "#{k.to_s} (#{v}) "}
-  print "\n"
+    	puts "You have no equipment!"
+  	else
+  		print "\n"
+  		counts = Hash.new(0)
+  		@equipment.each { |name| counts[name.to_s] += 1 }
+  		counts.each { |k,v| print "#{k.to_s} (#{v}) "}
+  		print "\n"
   end
 
 end
@@ -68,14 +68,14 @@ def sell(item)
 	@combine.each {|obj| selling[obj] = obj.to_s}
 	selling.each { |k,v| 
 		if item == k.to_s.downcase
-		$player.gp += k.value
-		anim("You sold the #{v} for #{k.value}gp!")	
-		if k.is_item
-			$inventory.items.delete(k)
-		end
-		if k.is_equipment
-			$inventory.equipment.delete(k)
-		end
+			$player.gp += k.value
+			anim("You sold the #{v} for #{k.value}gp!")	
+			if k.is_item
+				$inventory.items.delete(k)
+			end
+			if k.is_equipment
+				$inventory.equipment.delete(k)
+			end
 		end
 	}
 end

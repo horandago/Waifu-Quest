@@ -65,7 +65,6 @@ end
 unless $player.alive?
 	abort("you be dead")
 end
-
 end
 
 end

@@ -26,7 +26,7 @@ class Monster
 			if self.hp < 1
 				anim("You defeated the #{self.name.capitalize}!")
 				$player.exp(exp)
-				return true
+				break
 			end
 		self.action 	
 		when "item"
@@ -34,8 +34,9 @@ class Monster
 		when "look"
 			self.description
 		end
-end	
+	end	
 end
+
 end
 
 
