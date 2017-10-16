@@ -76,7 +76,7 @@ class Player
 	end
 
 	def info
-		anim("You are level : ?\nWeapon: #{@weapon.to_s}\nArmour: #{@armour.to_s}")
+		anim("You are level : ?\nGP: #{@gp}\nWeapon: #{@weapon.to_s}\nArmour: #{@armour.to_s}")
 	end
 
 end

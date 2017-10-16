@@ -70,4 +70,4 @@ end
 
 end
 
-Game.new
+$game = Game.new

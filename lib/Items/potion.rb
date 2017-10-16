@@ -4,6 +4,7 @@ class Potion < Items
 	def initialize
 		super
 		@name = "Potion"
+		@value = 5
 	end
 
 	def use
