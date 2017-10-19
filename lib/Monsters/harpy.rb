@@ -7,6 +7,9 @@ class Harpy < Monster
     @name = "Harpy"
     @attack = 1
 		@exp = 10
+		@items = [Potion.new, "nothing"]
+		@gold_lo = 0
+		@gold_hi = 10
 	end
 	
 	def description
