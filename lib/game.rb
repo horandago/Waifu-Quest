@@ -4,7 +4,7 @@ Dir["Npc/*.rb"].each { |file| require_relative file }
 Dir["Items/*.rb"].each { |file| require_relative file }
 Dir["Weapons/*.rb"].each { |file| require_relative file }
 Dir["Armour/*.rb"].each { |file| require_relative file }
-
+Dir["Maps/*.rb"].each { |file| require_relative file }
 
 system("clear")
 puts "
@@ -24,49 +24,20 @@ name = gets.chomp.downcase
 $player = Player.new(name)
 
 class Game
-
-def initialize
-	$inventory = Inventory.new
-	play_game
-end
-
-def play_game
-while $player.alive?
-	@choices = ["Fight", "Shop", "Inventory", "Equip", "Character"]
-	anim("What do you want to do?")
-	puts "----------"
-	puts @choices
-	puts "----------"
-	ans = gets.chomp.downcase.capitalize!
-	until @choices.include? ans
-		puts "Please type that correctly"
-		ans = gets.chomp.downcase.capitalize!
+	attr_accessor :current_map
+	def initialize
+		@hello = "h"
+		$inventory = Inventory.new
+		@current_map = $home
 	end
-	case ans
-		when "Character" then $player.info
-		when "Inventory" then $inventory.list_items
-			puts "exit"
-			anim("Use an item?")
-			ans = gets.chomp.downcase
-			$inventory.use_item(ans)
-		when "Shop" then
-			$shopkeeper.speak
-		when "Fight" then
-			$harpy = Harpy.new
-			$harpy.fight
-		when "Equip" then
-			anim("What do you want to equip?")
-			$inventory.list_equipment
-			puts "exit"
-			equip = gets.chomp.downcase
-			$player.equip(equip)
+
+	def play_game
+		while $player.alive?
+			@current_map.map
+		end
 	end
-end
-unless $player.alive?
-	abort("you be dead")
-end
-end
 
 end
 
 $game = Game.new
+$game.play_game
