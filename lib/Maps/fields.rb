@@ -4,15 +4,22 @@ class Fields < Maps
 		super
 		@monsters_list = [Harpy.new]	
 		@name = "Fields"
+		@choices = ["Look",
+					"Fight",
+					"Inventory",
+					"Equip",
+					"Character",
+					"Move"
+					]
+		@move = [$home,
+				]
+	end
+
+	def look
+		anim("The green fields stretch out as far as you can see")
 	end
 
 	def map
-	@choices = ["Look",
-							"Fight",
-							"Inventory",
-							"Equip",
-							"Character"
-						 ]
 		anim("What do you want to do?")
 		puts "----------"
 		puts @choices
@@ -22,22 +29,24 @@ class Fields < Maps
 			puts "Please type that correctly"
 			ans = gets.chomp.downcase.capitalize!
 		end
+		
 		case ans
-			when "Character" then $player.info
-			when "Inventory" then $inventory.list_items
-				puts "exit"
-				anim("Use an item?")
-				ans = gets.chomp.downcase
-				$inventory.use_item(ans)
-			when "Fight" then
-				@enemy = @monsters_list.sample
-				@enemy.fight
-			when "Equip" then
-				anim("What do you want to equip?")
-				$inventory.list_equipment
-				puts "exit"
-				equip = gets.chomp.downcase
-				$player.equip(equip)
+		when "Character" then 
+			$player.info
+		when "Inventory" then 
+			$inventory.list_items
+			self.inventory
+		when "Fight" then
+			@enemy = @monsters_list.sample
+			@enemy.fight
+		when "Shop" then
+			$shopkeeper.speak
+		when "Look" then
+			self.look
+		when "Equip" then
+			self.equip
+		when "Move" then
+			self.move
 		end
 	end
 
