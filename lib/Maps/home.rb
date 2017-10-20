@@ -11,6 +11,7 @@ class Home < Maps
 					]
 		@move = [$fields,
 				]
+		puts "HOME INITIALIZED"
 	end
 
 	def look
@@ -41,6 +42,7 @@ class Home < Maps
 				self.equip
 			when "Move" then
 				self.move
+				@move = [$fields]
 		end
 	end
 end

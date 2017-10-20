@@ -1,11 +1,10 @@
-require_relative '../monsters.rb'
-
 class Harpy < Monster
   def initialize
     super
     @hp = 5
     @name = "Harpy"
-    @attack = 1
+		@attack_lo = 1
+    @attack_hi = 3
 		@exp = 10
 		@items = [Potion.new, "nothing"]
 		@gold_lo = 0
@@ -18,6 +17,6 @@ class Harpy < Monster
 
 	def action
 		anim("The harpy flaps a strong wind at you!")
-		$player.hurt(self.attack)
+		$player.hurt(rand(@attack_lo...@attack_hi))
 	end
 end

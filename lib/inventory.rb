@@ -26,10 +26,12 @@ def use_item_battle(item)
       if $player.hp == $player.max_hp
       	k.use
 				$inventory.items.delete(k)
+				break
 			else
       	k.use
 				$inventory.items.delete(k)
 				$used = true
+				break
 			end
     end
   end

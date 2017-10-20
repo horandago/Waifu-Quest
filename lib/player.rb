@@ -12,7 +12,7 @@ class Player
 		@armour = $shirt
 		@base_attack = 0
 		@level = 1
-		@exp_hi = 10
+		@exp_level_up = 100
 	end
 
 	def alive?
@@ -46,14 +46,14 @@ class Player
 	def exp(gain)
 		@exp += gain
 		puts "You gained #{gain} exp!"
-		if @exp >= @exp_hi
+		if @exp >= @exp_level_up
 			level_up
 		end
 	end
 
 	def level_up
 		@level += 1
-		@exp_hi = @exp_hi * 2.5
+		@exp_level_up = @exp_hi * 2.5
 		@base_attack += 1
 		@max_hp = @max_hp * 1.2
 		anim("LEVEL UP!!")
@@ -89,7 +89,7 @@ class Player
 	end
 
 	def info
-		puts "Level : #{@level} | GP: #{@gp} | Weapon: #{@weapon.to_s} | Armour: #{@armour.to_s} | Exp: #{@exp}/#{@exp_hi.to_i}"
+		puts "Level : #{@level} | GP: #{@gp} | Weapon: #{@weapon.to_s} | Armour: #{@armour.to_s} | Exp: #{@exp}/#{@exp_level_up.to_i}"
 	end
 
 end

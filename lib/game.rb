@@ -28,7 +28,9 @@ class Game
 	def initialize
 		$inventory = Inventory.new
 		$home = Home.new
-		@current_map = $home
+		$fields = Fields.new
+		$cave = Cave.new
+		@current_map = $fields
 	end
 
 	def play_game
@@ -40,4 +42,5 @@ class Game
 end
 
 $game = Game.new
+$fields = Fields.new
 $game.play_game

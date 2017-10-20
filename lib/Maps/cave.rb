@@ -1,26 +1,26 @@
-class Fields < Maps
+class Cave < Maps
 
 	def initialize
 		super
-		@monsters_list = [Harpy.new]
-		@name = "Fields"
+		@monsters_list = [Slime.new]
+		@name = "Cave"
 		@choices = ["Look",
 					"Fight",
 					"Inventory",
 					"Equip",
 					"Move"
 					]
-		@move = [$home, $cave
-				]
+		@move = [$fields
+  	      ]
 	end
 
 	def look
-		anim("The green fields stretch out as far as you can see")
+		anim("A very dark cave with a chilling wind")
 	end
 
 	def map
 		anim("What do you want to do?")
-		puts "-----FIELDS-----"
+		puts "-----CAVE-----"
 		puts @choices
 		puts "----------------"
 		$player.info
@@ -39,7 +39,7 @@ class Fields < Maps
 			@enemy = @monsters_list.sample
 			anim("You encounter the #{@enemy.name}!")
 			@enemy.fight
-			@monsters_list = [Harpy.new]	
+			@monsters_list = [Slime.new]	
 		when "Shop" then
 			$shopkeeper.speak
 		when "Look" then
@@ -52,5 +52,4 @@ class Fields < Maps
 	end
 
 end
-
-$fields = Fields.new
+$cave = Cave.new
