@@ -26,8 +26,8 @@ $player = Player.new(name)
 class Game
 	attr_accessor :current_map
 	def initialize
-		@hello = "h"
 		$inventory = Inventory.new
+		$home = Home.new
 		@current_map = $home
 	end
 
