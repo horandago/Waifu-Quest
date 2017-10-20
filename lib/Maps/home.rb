@@ -7,7 +7,6 @@ class Home < Maps
 					"Shop",
 					"Inventory",
 					"Equip",
-					"Character",
 					"Move"
 					]
 		@move = [$fields,
@@ -20,17 +19,17 @@ class Home < Maps
 
 	def map
 		anim("What do you want to do?")
-		puts "----------"
+		puts "-----HOME-----"
 		puts @choices
-		puts "----------"
+		puts "--------------"
+		$player.info
+		print "\n: "
 		ans = gets.chomp.downcase.capitalize!
 		until @choices.include? ans
 			puts "Please type that correctly"
 			ans = gets.chomp.downcase.capitalize!
 		end
 		case ans
-			when "Character" then 
-				$player.info
 			when "Inventory" then 
 				$inventory.list_items
 				self.inventory

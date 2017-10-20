@@ -2,13 +2,12 @@ class Fields < Maps
 
 	def initialize
 		super
-		@monsters_list = [Harpy.new]	
+		@monsters_list = [Harpy.new]
 		@name = "Fields"
 		@choices = ["Look",
 					"Fight",
 					"Inventory",
 					"Equip",
-					"Character",
 					"Move"
 					]
 		@move = [$home,
@@ -21,9 +20,11 @@ class Fields < Maps
 
 	def map
 		anim("What do you want to do?")
-		puts "----------"
+		puts "-----FIELDS-----"
 		puts @choices
-		puts "----------"
+		puts "----------------"
+		$player.info
+		print "\n: "
 		ans = gets.chomp.downcase.capitalize!
 		until @choices.include? ans
 			puts "Please type that correctly"
@@ -31,14 +32,13 @@ class Fields < Maps
 		end
 		
 		case ans
-		when "Character" then 
-			$player.info
 		when "Inventory" then 
 			$inventory.list_items
 			self.inventory
 		when "Fight" then
 			@enemy = @monsters_list.sample
 			@enemy.fight
+			@monsters_list = [Harpy.new]	
 		when "Shop" then
 			$shopkeeper.speak
 		when "Look" then

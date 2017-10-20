@@ -15,10 +15,10 @@ class Monster
   def drop
 		@drop_item = items.sample
 		@drop_gold = rand(@gold_lo...@gold_hi)	
-		@grammar = "1 "
+		@grammar = ""
 		unless @drop_item == "nothing"
 			$inventory.add_item(@drop_item)
-			@grammar = ""
+			@grammar = "1 "
 		end
 		$player.gp += @drop_gold
 		anim("The #{self.name} dropped #{@grammar}#{@drop_item.to_s} and #{@drop_gold}gp!")

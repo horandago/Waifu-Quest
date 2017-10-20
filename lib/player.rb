@@ -1,6 +1,6 @@
 class Player
 	attr_reader :name 
-	attr_accessor :hp, :gp, :exp, :weapon, :max_hp
+	attr_accessor :hp, :gp, :exp, :weapon, :max_hp, :base_attack, :level
 		
 	def initialize(name)
 		@name = name
@@ -10,6 +10,9 @@ class Player
 		@gp = 100
 		@weapon = $bare_fists
 		@armour = $shirt
+		@base_attack = 0
+		@level = 1
+		@exp_hi = 10
 	end
 
 	def alive?
@@ -17,7 +20,7 @@ class Player
 	end
 
 	def attack
-		@weapon.send(:dmg)
+		@weapon.send(:dmg) + $player.base_attack
 	end
 
 	def hurt(amount)
@@ -43,8 +46,19 @@ class Player
 	def exp(gain)
 		@exp += gain
 		puts "You gained #{gain} exp!"
+		if @exp >= @exp_hi
+			level_up
+		end
 	end
 
+	def level_up
+		@level += 1
+		@exp_hi = @exp_hi * 2.5
+		@base_attack += 1
+		@max_hp = @max_hp * 1.2
+		anim("LEVEL UP!!")
+	end
+			
 	def equip(item)
 		equip = Hash.new
 		$inventory.equipment.each {|obj| equip[obj] = obj.to_s}
@@ -54,8 +68,8 @@ class Player
 				$inventory.equipment.push(@weapon) if @weapon != nil	
 				$inventory.equipment.delete(k)
 				@weapon = k
-				anim("You equip the #{@weapon.to_s}")
 				end
+				anim("You equip the #{@weapon.to_s}")
 			end
 			if k.is_armour
 				if item == k.to_s.downcase
@@ -73,7 +87,7 @@ class Player
 	end
 
 	def info
-		anim("You are level : ?\nGP: #{@gp}\nWeapon: #{@weapon.to_s}\nArmour: #{@armour.to_s}")
+		puts "Level : #{@level} | GP: #{@gp} | Weapon: #{@weapon.to_s} | Armour: #{@armour.to_s} | Exp: #{@exp}/#{@exp_hi.to_i}"
 	end
 
 end

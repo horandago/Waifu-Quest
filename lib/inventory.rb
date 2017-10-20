@@ -33,6 +33,7 @@ end
 def list_items
 	if @items.empty?
 		puts "Your inventory is empty!"
+		return $game.current_map.map
 	else
 	puts "\n"
 	counts = Hash.new(0)
@@ -45,7 +46,9 @@ end
 def list_equipment
 	if @equipment.empty?
     	puts "You have no equipment!"
+			return $game.current_map.map
   	else
+			anim("What do you want to equip?")
   		print "\n"
   		counts = Hash.new(0)
   		@equipment.each { |name| counts[name.to_s] += 1 }

@@ -16,7 +16,6 @@ class Maps
 	end
 
 	def equip
-		anim("What do you want to equip?")
 		$inventory.list_equipment
 		puts "exit"
 		equip = gets.chomp.downcase
