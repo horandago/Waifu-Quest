@@ -1,14 +1,14 @@
 class Inventory
 	attr_accessor :equipment, :items
 def initialize
-	@items = Array.new
+	@items = [Potion.new]
 	@equipment = Array.new
 end
 
 def use_item(item)
-	thing = Hash.new
-	$inventory.items.each {|obj| thing[obj] = obj.to_s}
-	thing.each { |k,v| if k.is_usable
+	list = Hash.new
+	$inventory.items.each {|obj| list[obj] = obj.to_s}
+	list.each { |k,v| if k.is_usable
 		if item == k.to_s.downcase
 			k.use
 			$inventory.items.delete(k)
@@ -18,8 +18,22 @@ def use_item(item)
 	}
 end
 
-def to_s
-	self.name
+def use_item_battle(item)
+  list = Hash.new
+  $inventory.items.each {|obj| list[obj] = obj.to_s}
+  list.each { |k,v| if k.is_usable
+    if item == k.to_s.downcase
+      if $player.hp == $player.max_hp
+      	k.use
+				$inventory.items.delete(k)
+			else
+      	k.use
+				$inventory.items.delete(k)
+				$used = true
+			end
+    end
+  end
+  }
 end
 
 def add_item(item)
@@ -33,7 +47,7 @@ end
 def list_items
 	if @items.empty?
 		puts "Your inventory is empty!"
-		return $game.current_map.map
+		return
 	else
 	puts "\n"
 	counts = Hash.new(0)

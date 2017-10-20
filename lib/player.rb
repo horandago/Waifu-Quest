@@ -8,7 +8,7 @@ class Player
 		@hp = 10
 		@exp = 0
 		@gp = 100
-		@weapon = $bare_fists
+		@weapon = $bronze_sword
 		@armour = $shirt
 		@base_attack = 0
 		@level = 1

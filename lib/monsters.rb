@@ -43,7 +43,21 @@ class Monster
 			end
 		self.action 	
 		when "item"
-			$inventory.list_items
+			if $inventory.items.empty?
+				puts "You have no items"
+				return self.fight
+			else
+				$inventory.list_items
+				puts "exit"
+  	  	anim("Use an item?")
+    		ans = gets.chomp.downcase
+    		$used = false
+				$inventory.use_item_battle(ans)
+					if $used == true
+						self.action
+					end
+				return self.fight
+				end
 		when "look"
 			self.description
 		end
