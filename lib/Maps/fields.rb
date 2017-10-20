@@ -37,6 +37,7 @@ class Fields < Maps
 			self.inventory
 		when "Fight" then
 			@enemy = @monsters_list.sample
+			anim("You encounter the #{@enemy.name}!")
 			@enemy.fight
 			@monsters_list = [Harpy.new]	
 		when "Shop" then

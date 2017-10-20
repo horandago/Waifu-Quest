@@ -25,11 +25,12 @@ class Monster
 	end
 
 	def fight
-		anim("You encounter the #{@name}!")
 	while $player.alive?
-		puts "HP: #{$player.hp} | #{self.name}: #{self.hp}"
+		puts "-------------------------"
+		puts "#{$player.name}: #{$player.hp}HP | #{self.name}: #{self.hp}HP"
+		puts "-------------------------"
 		anim("What do you want to do?")
-		puts "----\nFight\nItem\nLook\n----"
+		puts "------\nFight\nItem\nLook\n------"
 		ans = gets.chomp.downcase
 		case ans
 		when "fight"

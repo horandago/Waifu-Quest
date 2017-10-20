@@ -20,7 +20,7 @@ puts "
          			\\>
 "
 anim("What is your name?")
-name = gets.chomp.downcase
+name = gets.chomp.downcase.capitalize
 $player = Player.new(name)
 
 class Game

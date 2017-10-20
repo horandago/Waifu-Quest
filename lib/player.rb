@@ -70,13 +70,15 @@ class Player
 				@weapon = k
 				end
 				anim("You equip the #{@weapon.to_s}")
+				break
 			end
 			if k.is_armour
 				if item == k.to_s.downcase
       				$inventory.equipment.push(@armour) if @armour != nil
       				$inventory.equipment.delete(k)
       				@armour = k
-					anim("You put on the #{@armour.to_s}")
+							anim("You put on the #{@armour.to_s}")
+							break
       			end
       		end
 		}
