@@ -1,5 +1,3 @@
-require_relative '../items.rb'
-
 class Potion < Items
 	def initialize
 		super

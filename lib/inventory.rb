@@ -1,20 +1,20 @@
 class Inventory
 	attr_accessor :equipment, :items
 def initialize
-	@items = [Potion.new]
+	@items = [Potion.new, Map.new]
 	@equipment = Array.new
 end
 
 def use_item(item)
 	list = Hash.new
 	$inventory.items.each {|obj| list[obj] = obj.to_s}
-	list.each { |k,v| if k.is_usable
-		if item == k.to_s.downcase
+	list.each { |k,v| if item == k.to_s.downcase
 			k.use
-			$inventory.items.delete(k)
+			if k.is_usable
+				$inventory.items.delete(k)
+			end
 			break
 		end 
-	end
 	}
 end
 
@@ -69,13 +69,12 @@ def list_equipment
   		counts.each { |k,v| print "#{k.to_s} (#{v}) "}
   		print "\n"
   end
-
 end
 
 def list_all_items_price
 	counts = Hash.new(0)
 	@combine = @items + @equipment
-	@combine.each { |name| counts[name.to_s] += name.value}
+	@combine.each { |name| counts[name.to_s] += name.value if name.is_sellable}
 	counts.each { |k,v| print "#{k.to_s} (#{v}gp) \n"}
 end
 
