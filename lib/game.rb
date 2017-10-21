@@ -27,10 +27,10 @@ class Game
 	attr_accessor :current_map
 	def initialize
 		$inventory = Inventory.new
-		$home = Home.new
 		$fields = Fields.new
+		$home = Home.new
 		$cave = Cave.new
-		@current_map = $fields
+		@current_map = $home	
 	end
 
 	def play_game
@@ -39,8 +39,13 @@ class Game
 		end
 	end
 
+	def dead
+		anim("You died!")
+		anim("You wake up in your home town...")
+		$player.hp == $player.max_hp
+	end
+
 end
 
 $game = Game.new
-$fields = Fields.new
 $game.play_game

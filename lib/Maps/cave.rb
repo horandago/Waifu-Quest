@@ -10,8 +10,7 @@ class Cave < Maps
 					"Equip",
 					"Move"
 					]
-		@move = [$fields
-  	      ]
+		
 	end
 
 	def look
@@ -19,10 +18,12 @@ class Cave < Maps
 	end
 
 	def map
+		@move_map = [$fields
+					]
 		anim("What do you want to do?")
 		puts "-----CAVE-----"
 		puts @choices
-		puts "----------------"
+		puts "--------------"
 		$player.info
 		print "\n: "
 		ans = gets.chomp.downcase.capitalize!
@@ -52,4 +53,3 @@ class Cave < Maps
 	end
 
 end
-$cave = Cave.new

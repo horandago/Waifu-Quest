@@ -8,7 +8,7 @@ class Armour
 		@is_equipment = true
 		@is_item = false
 		@is_usable = false
-		@is_selalble = true
+		@is_sellable = true
 	end
 
 	def to_s

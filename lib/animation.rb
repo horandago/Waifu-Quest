@@ -5,3 +5,5 @@ def anim(string)
   end
   print "\n"
 end
+
+

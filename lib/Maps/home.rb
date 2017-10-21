@@ -9,9 +9,7 @@ class Home < Maps
 					"Equip",
 					"Move"
 					]
-		@move = [$fields,
-				]
-		puts "HOME INITIALIZED"
+		
 	end
 
 	def look
@@ -19,6 +17,7 @@ class Home < Maps
 	end
 
 	def map
+		@move_map = [$fields]
 		anim("What do you want to do?")
 		puts "-----HOME-----"
 		puts @choices
@@ -42,9 +41,6 @@ class Home < Maps
 				self.equip
 			when "Move" then
 				self.move
-				@move = [$fields]
 		end
 	end
 end
-
-$home = Home.new

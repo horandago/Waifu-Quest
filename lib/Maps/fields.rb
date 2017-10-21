@@ -10,8 +10,6 @@ class Fields < Maps
 					"Equip",
 					"Move"
 					]
-		@move = [$home, $cave
-				]
 	end
 
 	def look
@@ -19,6 +17,7 @@ class Fields < Maps
 	end
 
 	def map
+		@move_map = [$home, $cave]
 		anim("What do you want to do?")
 		puts "-----FIELDS-----"
 		puts @choices
@@ -47,10 +46,9 @@ class Fields < Maps
 		when "Equip" then
 			self.equip
 		when "Move" then
-			self.move
+			move
 		end
 	end
 
 end
 
-$fields = Fields.new

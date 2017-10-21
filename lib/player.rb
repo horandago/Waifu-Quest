@@ -7,8 +7,8 @@ class Player
 		@max_hp = 10
 		@hp = 10
 		@exp = 0
-		@gp = 100
-		@weapon = $bronze_sword
+		@gp = 0
+		@weapon = $bare_fists
 		@armour = $shirt
 		@base_attack = 0
 		@level = 1
