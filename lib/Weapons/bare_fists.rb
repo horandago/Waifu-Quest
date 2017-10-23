@@ -16,4 +16,3 @@ class Bare_fists < Weapons
 	end
 end
 
-$bare_fists = Bare_fists.new

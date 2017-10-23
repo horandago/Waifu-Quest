@@ -5,7 +5,7 @@ class Bandit_queen < Monster
     @name = "Bandit Queen"
     @attack_lo = 2
 		@attack_hi = 6
-		@exp = 10
+		@exp = 30
 		@items = [Rapier.new]
 		@gold_lo = 20
 		@gold_hi = 21
@@ -25,4 +25,4 @@ class Bandit_queen < Monster
 	end
 end
 
-$bandit_queen = Bandit_queen.new
+

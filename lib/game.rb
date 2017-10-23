@@ -48,4 +48,5 @@ class Game
 end
 
 $game = Game.new
+$bandit_queen = Bandit_queen.new
 $game.play_game

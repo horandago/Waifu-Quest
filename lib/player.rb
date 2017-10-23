@@ -6,13 +6,13 @@ class Player
 		@name = name
 		@max_hp = 10
 		@hp = max_hp
-		@exp = 0
-		@gp = 0
-		@weapon = $bare_fists
-		@armour = $shirt
+		@exp = 90
+		@gp = 100
+		@weapon = Bare_fists.new
+		@armour = Shirt.new
 		@base_attack = 0
 		@level = 1
-		@exp_level_up = 10
+		@exp_level_up = 100
 	end
 
 	def alive?
@@ -36,10 +36,10 @@ class Player
 		if @hp + amount > @max_hp
 			diff = @max_hp - @hp
 			@hp = @max_hp
-			anim("You gain #{diff} HP!")
+			anim("You gain #{diff.to_i} HP!")
 		else
 			@hp += amount
-			anim("You gain #{amount} HP!")
+			anim("You gain #{amount.to_i} HP!")
 		end
 	end
 
@@ -69,17 +69,17 @@ class Player
 				$inventory.equipment.push(@weapon) if @weapon != nil	
 				$inventory.equipment.delete(k)
 				@weapon = k
-				end
 				anim("You equip the #{@weapon.to_s}")
 				break
+				end
 			end
 			if k.is_armour
 				if item == k.to_s.downcase
       				$inventory.equipment.push(@armour) if @armour != nil
       				$inventory.equipment.delete(k)
       				@armour = k
-							anim("You put on the #{@armour.to_s}")
-							break
+					anim("You put on the #{@armour.to_s}")
+					break
       			end
       		end
 		}

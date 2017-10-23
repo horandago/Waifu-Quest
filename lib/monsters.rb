@@ -10,7 +10,7 @@ class Monster
 
 	def hurt(amount)
 		@hp -= amount
-		puts "Monster takes #{amount} damage!"
+		puts "#{self.name} takes #{amount} damage!"
 	end
 
   def drop

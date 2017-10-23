@@ -1,7 +1,7 @@
 class Inventory
 	attr_accessor :equipment, :items
 def initialize
-	@items = [Potion.new, Potion.new, Map.new]
+	@items = [Potion.new, $map]
 	@equipment = Array.new
 end
 
@@ -80,22 +80,25 @@ def list_all_items_price
 	counts.each { |k,v| print "#{k.to_s} (#{v}gp) \n"}
 end
 
-def sell(item)
+def sell(item) 
 	selling = Hash.new
 	@combine = @items + @equipment
 	@combine.each {|obj| selling[obj] = obj.to_s}
+	puts item
 	selling.each { |k,v| 
-		if item == k.to_s.downcase
+	puts k
+		if item == v.downcase
 			$player.gp += k.value
 			anim("You sold the #{v} for #{k.value}gp!")	
 			if k.is_item
 				$inventory.items.delete(k)
+				break
 			end
 			if k.is_equipment
 				$inventory.equipment.delete(k)
+				break
 			end
 		end
-		break
 	}
 end
 
