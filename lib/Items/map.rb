@@ -5,7 +5,7 @@ class Map < Items
 		@name = "Map"
 		@value = nil
 		@is_sellable = false
-		@level = 3
+		@level = 1
 	end
 
 	def use

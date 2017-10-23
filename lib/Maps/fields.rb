@@ -6,7 +6,7 @@ class Fields < Maps
 		@name = "Fields"
 		@choices = ["Look",
 					"Fight",
-					"Inventory",
+					"Item",
 					"Equip",
 					"Move"
 					]
@@ -31,7 +31,7 @@ class Fields < Maps
 		end
 		
 		case ans
-		when "Inventory" then 
+		when "Item" then 
 			$inventory.list_items
 			self.inventory
 		when "Fight" then

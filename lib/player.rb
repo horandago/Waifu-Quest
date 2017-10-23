@@ -4,8 +4,8 @@ class Player
 		
 	def initialize(name)
 		@name = name
-		@max_hp = 10
-		@hp = 10
+		@max_hp = 1
+		@hp = max_hp
 		@exp = 0
 		@gp = 0
 		@weapon = $bare_fists
@@ -92,6 +92,14 @@ class Player
 		puts "Level : #{@level} | GP: #{@gp} | Weapon: #{@weapon.to_s} | Armour: #{@armour.to_s} | Exp: #{@exp}/#{@exp_level_up.to_i}"
 	end
 
+	def dead
+		anim("You died!")
+		$game.continue
+		anim("You wake up in your home town...")
+		$player.hp = $player.max_hp
+		$game.current_map = $home
+		return $game.current_map.map
+	end
 end
 
 

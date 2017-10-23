@@ -5,7 +5,7 @@ class Home < Maps
 		@name = "Home"
 		@choices = ["Look",
 					"Shop",
-					"Inventory",
+					"Item",
 					"Equip",
 					"Move"
 					]
@@ -30,7 +30,7 @@ class Home < Maps
 			ans = gets.chomp.downcase.capitalize!
 		end
 		case ans
-			when "Inventory" then 
+			when "Item" then 
 				$inventory.list_items
 				self.inventory
 			when "Shop" then

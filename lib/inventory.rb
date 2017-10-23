@@ -34,6 +34,7 @@ def use_item_battle(item)
 				break
 			end
     end
+			puts "You cannot use that right now"
   end
   }
 end

@@ -30,7 +30,7 @@ class Monster
 		puts "#{$player.name}: #{$player.hp}HP | #{self.name}: #{self.hp}HP"
 		puts "-------------------------"
 		anim("What do you want to do?")
-		puts "------\nFight\nItem\nLook\n------"
+		puts "------\nFight\nItem\nLook\nRun\n------"
 		ans = gets.chomp.downcase
 		case ans
 		when "fight"
@@ -50,9 +50,9 @@ class Monster
 			else
 				$inventory.list_items
 				puts "exit"
-  	  			anim("Use an item?")
-    			ans = gets.chomp.downcase
-    			$used = false
+  	  	anim("Use an item?")
+    		ans = gets.chomp.downcase
+    		$used = false
 				$inventory.use_item_battle(ans)
 				if $used == true
 					self.action
@@ -61,6 +61,21 @@ class Monster
 			end
 		when "look"
 			self.description
+		when "run"
+			anim("You try to escape!")
+			self.action
+			if $player.hp > 0
+				anim("......You manage to escape!")
+				$game.continue
+				break
+			else
+				$player.dead
+				break
+			end	
+		end
+		if $player.hp < 1
+			$player.dead
+			break
 		end
 	end	
 end

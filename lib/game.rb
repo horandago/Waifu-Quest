@@ -1,3 +1,5 @@
+require 'io/console'
+
 Dir["*.rb"].each { |file| require_relative file }
 Dir["Monsters/*.rb"].each { |file| require_relative file }
 Dir["Npc/*.rb"].each { |file| require_relative file }
@@ -39,11 +41,13 @@ class Game
 		end
 	end
 
-	def dead
-		anim("You died!")
-		anim("You wake up in your home town...")
-		$player.hp == $player.max_hp
+	def continue
+	  print "*press any key to continue*"
+	  STDIN.getch
+	  print "\r"
+	  puts "------------------------------"
 	end
+
 
 end
 
