@@ -9,7 +9,6 @@ class Maps
 	end
 
 	def inventory
-		puts "exit"
 		anim("Use an item?")
 		ans = gets.chomp.downcase
 		$inventory.use_item(ans)
@@ -17,7 +16,6 @@ class Maps
 
 	def equip
 		$inventory.list_equipment
-		puts "exit"
 		equip = gets.chomp.downcase
 		$player.equip(equip)
 	end
@@ -42,5 +40,10 @@ class Maps
 			puts "Please type that correctly"
 			ans = gets.chomp.downcase.capitalize!
 		end
+	end
+
+	def rest
+		anim("You take a rest in the village's inn\nYou restore your hp!")
+		$player.hp = $player.max_hp
 	end
 end

@@ -2,7 +2,6 @@ class Cave < Maps
 
 	def initialize
 		super
-		@monsters_list = [Slime.new]
 		@name = "Cave"
 		@choices = ["Look",
 					"Fight",
@@ -37,12 +36,10 @@ class Cave < Maps
 			$inventory.list_items
 			self.inventory
 		when "Fight" then
+			@monsters_list = [Slime.new]	
 			@enemy = @monsters_list.sample
 			anim("You encounter the #{@enemy.name}!")
 			@enemy.fight
-			@monsters_list = [Slime.new]	
-		when "Shop" then
-			$shopkeeper.speak
 		when "Look" then
 			self.look
 		when "Equip" then
@@ -53,3 +50,4 @@ class Cave < Maps
 	end
 
 end
+$cave = Cave.new

@@ -3,8 +3,8 @@ class Bronze_sword < Weapons
 	def initialize
 		super
 		@name = "Bronze sword"
-		@dmg_hi = 4
 		@dmg_lo = 1
+		@dmg_hi = 4
 		@value = 20
 	end
 
@@ -13,4 +13,3 @@ class Bronze_sword < Weapons
 	end
 end
 
-$bronze_sword = Bronze_sword.new

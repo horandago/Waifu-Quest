@@ -1,8 +1,8 @@
 class Bare_fists < Weapons
 	def initialize
 		super
-		@dmg_hi = 2
 		@dmg_lo = 1
+		@dmg_hi = 2
 		@name = "Bare fists"
 		@value = 5
 	end

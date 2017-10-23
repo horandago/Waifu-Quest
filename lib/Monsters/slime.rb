@@ -1,11 +1,11 @@
 class Slime < Monster
   def initialize
     super
-    @hp = 10
+    @hp = 8
     @name = "Slime"
     @attack_lo = 2
 		@attack_hi = 4
-		@exp = 15
+		@exp = 10
 		@items = [Potion.new, "nothing"]
 		@gold_lo = 0
 		@gold_hi = 10

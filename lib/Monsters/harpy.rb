@@ -3,12 +3,12 @@ class Harpy < Monster
     super
     @hp = 5
     @name = "Harpy"
-		@attack_lo = 1
+		@attack_lo = 0
     @attack_hi = 3
-		@exp = 10
+		@exp = 5
 		@items = [Potion.new, "nothing"]
-		@gold_lo = 0
-		@gold_hi = 10
+		@gold_lo = 3
+		@gold_hi = 11
 	end
 	
 	def description

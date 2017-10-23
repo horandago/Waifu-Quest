@@ -2,7 +2,7 @@ require_relative '../npc.rb'
 
 class Shopkeeper < Npc
 			POTION_COST = 10
-			SWORD_COST = 40
+			SWORD_COST = 35
 			MAIL_COST = 50
 	def initialize
 			@@shop_list = ['Potion', 'Bronze sword', 'Chainmail', 'Exit']
@@ -43,7 +43,7 @@ class Shopkeeper < Npc
 					anim("Shopkeeper: You're too poor to buy a..potion? Begone, peasant!")
 				end
 			when 'Bronze sword'
-      			if $player.gp >= 40
+      			if $player.gp >= 35
         			puts "You purchase the bronze sword for #{SWORD_COST}gp!"
         			$inventory.add_item(Bronze_sword.new)
         			$player.gp -= SWORD_COST

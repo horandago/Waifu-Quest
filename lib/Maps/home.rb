@@ -7,7 +7,8 @@ class Home < Maps
 					"Shop",
 					"Item",
 					"Equip",
-					"Move"
+					"Move",
+					"Rest"
 					]
 		
 	end
@@ -41,6 +42,9 @@ class Home < Maps
 				self.equip
 			when "Move" then
 				self.move
+			when "Rest" then
+				self.rest
 		end
 	end
 end
+$home = Home.new

@@ -1,7 +1,7 @@
 class Inventory
 	attr_accessor :equipment, :items
 def initialize
-	@items = [Potion.new, Map.new]
+	@items = [Potion.new, Potion.new, Map.new]
 	@equipment = Array.new
 end
 
@@ -50,7 +50,6 @@ end
 def list_items
 	if @items.empty?
 		puts "Your inventory is empty!"
-		return
 	else
 	puts "\n"
 	counts = Hash.new(0)
@@ -75,9 +74,9 @@ def list_equipment
 end
 
 def list_all_items_price
-	counts = Hash.new(0)
+	counts = Hash.new
 	@combine = @items + @equipment
-	@combine.each { |name| counts[name.to_s] += name.value if name.is_sellable}
+	@combine.each { |name| counts[name.to_s] = name.value if name.is_sellable}
 	counts.each { |k,v| print "#{k.to_s} (#{v}gp) \n"}
 end
 
@@ -96,6 +95,7 @@ def sell(item)
 				$inventory.equipment.delete(k)
 			end
 		end
+		break
 	}
 end
 

@@ -29,9 +29,6 @@ class Game
 	attr_accessor :current_map
 	def initialize
 		$inventory = Inventory.new
-		$fields = Fields.new
-		$home = Home.new
-		$cave = Cave.new
 		@current_map = $home	
 	end
 
@@ -47,7 +44,6 @@ class Game
 	  print "\r"
 	  puts "------------------------------"
 	end
-
 
 end
 

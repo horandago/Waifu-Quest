@@ -4,7 +4,7 @@ class Player
 		
 	def initialize(name)
 		@name = name
-		@max_hp = 1
+		@max_hp = 10
 		@hp = max_hp
 		@exp = 0
 		@gp = 0
@@ -12,7 +12,7 @@ class Player
 		@armour = $shirt
 		@base_attack = 0
 		@level = 1
-		@exp_level_up = 100
+		@exp_level_up = 10
 	end
 
 	def alive?
@@ -53,9 +53,10 @@ class Player
 
 	def level_up
 		@level += 1
-		@exp_level_up = @exp_hi * 2.5
+		@exp_level_up = @exp_level_up * 2.5
 		@base_attack += 1
 		@max_hp = @max_hp * 1.2
+		@hp = @max_hp
 		anim("LEVEL UP!!")
 	end
 			
@@ -103,9 +104,3 @@ class Player
 end
 
 
-class Mage < Player
-	
-	def use_mp(amount)
-		@mp -= amount
-	end
-end

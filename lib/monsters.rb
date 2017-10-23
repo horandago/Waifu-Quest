@@ -1,5 +1,6 @@
 class Monster
-	attr_reader :hp, :name, :attack, :exp, :gold_lo, :gold_hi, :items
+	attr_reader :name, :attack, :exp, :gold_lo, :gold_hi, :items
+	attr_accessor :hp
 	def initialize
 	end
 
@@ -27,13 +28,13 @@ class Monster
 	def fight
 	while $player.alive?
 		puts "-------------------------"
-		puts "#{$player.name}: #{$player.hp}HP | #{self.name}: #{self.hp}HP"
+		puts "#{$player.name}: #{$player.hp.to_i}HP | #{self.name}: #{self.hp}HP"
 		puts "-------------------------"
 		anim("What do you want to do?")
-		puts "------\nFight\nItem\nLook\nRun\n------"
+		puts "------\nAttack\nItem\nLook\nRun\n------"
 		ans = gets.chomp.downcase
 		case ans
-		when "fight"
+		when "attack", "a"
 			self.hurt($player.attack)
 			puts "#{self.name} attacks you!"
 			if self.hp < 1
@@ -43,7 +44,7 @@ class Monster
 				break
 			end
 		self.action 	
-		when "item"
+		when "item", "i"
 			if $inventory.items.empty?
 				puts "You have no items"
 				return self.fight
@@ -59,9 +60,9 @@ class Monster
 				end
 				return self.fight
 			end
-		when "look"
+		when "look", "l"
 			self.description
-		when "run"
+		when "run", "r"
 			anim("You try to escape!")
 			self.action
 			if $player.hp > 0
