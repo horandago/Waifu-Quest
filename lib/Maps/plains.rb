@@ -1,31 +1,26 @@
-class Mountains < Maps
+class Plains < Maps
 
 	def initialize
 		super
-		@name = "Mountains"
+		@name = "Plains"
 		@choices = ["Look",
 					"Fight",
 					"Item",
 					"Equip",
 					"Move"
 					]
-		
 	end
 
 	def look
-		anim("Steep rocky mountains without an end in sight...")
+		anim("Flat green plains with a pleasant stone path")
 	end
 
 	def map
-		@move_map = [$fields
-					]
-		if $map.level > 1
-      @move_map.push($path)
-    end
+		@move_map = [$bridge, $village]
 		anim("What do you want to do?")
-		puts "-----MOUNTAINS-----"
+		puts "-----PLAINS-----"
 		puts @choices
-		puts "-------------------"
+		puts "----------------"
 		$player.info
 		print "\n: "
 		ans = gets.chomp.downcase.capitalize!
@@ -39,7 +34,7 @@ class Mountains < Maps
 			$inventory.list_items
 			self.inventory
 		when "Fight" then
-			@monsters_list = [Rock_beetle.new]	
+			@monsters_list = [Large_harpy.new]	
 			@enemy = @monsters_list.sample
 			anim("You encounter the #{@enemy.name}!")
 			@enemy.fight
@@ -48,10 +43,9 @@ class Mountains < Maps
 		when "Equip" then
 			self.equip
 		when "Move" then
-			self.move
+			move
 		end
 	end
 
 end
-
-$mountains = Mountains.new
+$plains = Plains.new

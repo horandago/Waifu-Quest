@@ -6,7 +6,7 @@ class Harpy < Monster
 		@attack_lo = 0
     @attack_hi = 3
 		@exp = 5
-		@items = [Potion.new, "nothing"]
+		@items = [Potion.new, Feather.new, "nothing"]
 		@gold_lo = 3
 		@gold_hi = 11
 	end

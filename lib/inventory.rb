@@ -1,7 +1,7 @@
 class Inventory
 	attr_accessor :equipment, :items
 def initialize
-	@items = [Potion.new, $map]
+	@items = [Potion.new, $map, Feather.new, Feather.new, Feather.new]
 	@equipment = Array.new
 end
 
@@ -12,6 +12,8 @@ def use_item(item)
 			k.use
 			if k.is_usable
 				$inventory.items.delete(k)
+			else
+				anim("Nothing happens..")
 			end
 			break
 		end 
@@ -84,9 +86,27 @@ def sell(item)
 	selling = Hash.new
 	@combine = @items + @equipment
 	@combine.each {|obj| selling[obj] = obj.to_s}
-	puts item
 	selling.each { |k,v| 
-	puts k
+			if k.is_junk
+				anim("Do you want to sell all of your #{item}(s)?(y/n)")
+				ans = gets.chomp.downcase
+				case ans
+					when "y", "yes"
+						@make = 0
+						@many = 0
+						selling.each {|k,v|
+							puts v
+							if item == v.downcase
+								@make += k.value
+								@many += 1
+								$inventory.items.delete(k)
+							end }
+							anim("You sold #{@many} #{item}(s) for #{@make}gp!")
+					when "n", "no"
+						puts "Fair enough..."
+					end
+					break
+				end
 		if item == v.downcase
 			$player.gp += k.value
 			anim("You sold the #{v} for #{k.value}gp!")	

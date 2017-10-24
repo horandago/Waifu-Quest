@@ -1,7 +1,8 @@
 class Monster
-	attr_reader :name, :attack, :exp, :gold_lo, :gold_hi, :items
+	attr_reader :name, :attack, :exp, :gold_lo, :gold_hi, :items, :is_boss
 	attr_accessor :hp
 	def initialize
+		@is_boss = false
 	end
 
 	def alive?

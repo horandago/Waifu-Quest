@@ -2,6 +2,7 @@ require 'io/console'
 
 Dir["*.rb"].each { |file| require_relative file }
 Dir["Monsters/*.rb"].each { |file| require_relative file }
+Dir["Monsters/Bosses/*.rb"].each { |file| require_relative file }
 Dir["Npc/*.rb"].each { |file| require_relative file }
 Dir["Items/*.rb"].each { |file| require_relative file }
 Dir["Weapons/*.rb"].each { |file| require_relative file }
@@ -48,5 +49,4 @@ class Game
 end
 
 $game = Game.new
-$bandit_queen = Bandit_queen.new
 $game.play_game

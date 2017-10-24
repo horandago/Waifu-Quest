@@ -6,7 +6,7 @@ class Slime < Monster
     @attack_lo = 2
 		@attack_hi = 4
 		@exp = 10
-		@items = [Potion.new, "nothing"]
+		@items = [Potion.new, Goo.new, "nothing"]
 		@gold_lo = 0
 		@gold_hi = 10
 	end

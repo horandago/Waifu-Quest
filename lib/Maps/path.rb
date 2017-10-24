@@ -1,8 +1,8 @@
-class Mountains < Maps
+class Path < Maps
 
 	def initialize
 		super
-		@name = "Mountains"
+		@name = "Path"
 		@choices = ["Look",
 					"Fight",
 					"Item",
@@ -13,19 +13,15 @@ class Mountains < Maps
 	end
 
 	def look
-		anim("Steep rocky mountains without an end in sight...")
+		anim("A narrow path on the edge of a cliff. It's getting rather hot...")
 	end
 
 	def map
-		@move_map = [$fields
-					]
-		if $map.level > 1
-      @move_map.push($path)
-    end
+		@move_map = [$mountains]
 		anim("What do you want to do?")
-		puts "-----MOUNTAINS-----"
+		puts "-----PATH-----"
 		puts @choices
-		puts "-------------------"
+		puts "--------------"
 		$player.info
 		print "\n: "
 		ans = gets.chomp.downcase.capitalize!
@@ -39,7 +35,7 @@ class Mountains < Maps
 			$inventory.list_items
 			self.inventory
 		when "Fight" then
-			@monsters_list = [Rock_beetle.new]	
+			@monsters_list = [Fire_slime.new]	
 			@enemy = @monsters_list.sample
 			anim("You encounter the #{@enemy.name}!")
 			@enemy.fight
@@ -53,5 +49,4 @@ class Mountains < Maps
 	end
 
 end
-
-$mountains = Mountains.new
+$path = Cave.new

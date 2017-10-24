@@ -6,7 +6,7 @@ class Mallet < Weapons
 		@name = "Mallet"
 		@dmg_lo = 4
 		@dmg_hi = 6
-		@value = 35
+		@value = 100
 	end
 
 	def description

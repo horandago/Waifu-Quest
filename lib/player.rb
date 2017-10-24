@@ -6,13 +6,13 @@ class Player
 		@name = name
 		@max_hp = 10
 		@hp = max_hp
-		@exp = 90
-		@gp = 100
+		@exp = 0
+		@gp = 0
 		@weapon = Bare_fists.new
 		@armour = Shirt.new
 		@base_attack = 0
 		@level = 1
-		@exp_level_up = 100
+		@exp_level_up = 50
 	end
 
 	def alive?

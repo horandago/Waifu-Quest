@@ -20,8 +20,11 @@ class Bridge < Maps
 	end
 
 	def map
-		@move_map = [$fields
+			@move_map = [$fields
 					]
+		if $map.level > 1
+			@move_map.push($plains)
+		end
 		anim("What do you want to do?")
 		puts "-----BRIDGE-----"
 		puts @choices

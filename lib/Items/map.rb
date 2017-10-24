@@ -1,4 +1,5 @@
 class Map < Items
+	attr_accessor :level
 	def initialize
 		super
 		@is_usable = false
