@@ -1,7 +1,7 @@
 class Inventory
 	attr_accessor :equipment, :items
 def initialize
-	@items = [Potion.new, $map, Feather.new, Feather.new, Feather.new]
+	@items = [Potion.new, $map]
 	@equipment = Array.new
 end
 
@@ -102,6 +102,7 @@ def sell(item)
 								$inventory.items.delete(k)
 							end }
 							anim("You sold #{@many} #{item}(s) for #{@make}gp!")
+							$player.gp += @make
 					when "n", "no"
 						puts "Fair enough..."
 					end
