@@ -3,12 +3,6 @@ class Mountains < Maps
 	def initialize
 		super
 		@name = "Mountains"
-		@choices = ["Look",
-					"Fight",
-					"Item",
-					"Equip",
-					"Move"
-					]
 		
 	end
 
@@ -17,6 +11,12 @@ class Mountains < Maps
 	end
 
 	def map
+		@choices = ["Look",
+					"Fight",
+					"Item",
+					"Equip",
+					"Move"
+					]
 		@move_map = [$fields]
 		if $map.level > 1
       @move_map.push($path)

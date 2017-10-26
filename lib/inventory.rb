@@ -1,7 +1,7 @@
 class Inventory
 	attr_accessor :equipment, :items
 def initialize
-	@items = [Potion.new, $map, Feather.new, Rock.new, Goo.new]
+	@items = [Potion.new, $map, Rope.new]
 	@equipment = Array.new
 end
 
@@ -16,6 +16,7 @@ def use_item(item)
         k.use
       else
 				anim("Nothing happens..")
+        $game.continue
 			end
 			break
 		end 
@@ -42,6 +43,7 @@ def use_item_battle(item)
     else
 			if item == k.to_s.downcase
 			  puts "You cannot use that right now"
+        $game.continue
       end
     end
   }

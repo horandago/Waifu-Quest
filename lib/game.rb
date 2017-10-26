@@ -1,4 +1,5 @@
 require 'io/console'
+require 'colorize'
 
 Dir["*.rb"].each { |file| require_relative file }
 Dir["Monsters/*.rb"].each { |file| require_relative file }

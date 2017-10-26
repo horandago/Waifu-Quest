@@ -23,7 +23,7 @@ class Hydra < Monster
 	end
 
   def drop
-		@drop_item = Rapier.new
+		@drop_item = Mithril.new
 		$map.level = 3
     @drop_gold = 100
     $inventory.add_item(@drop_item)

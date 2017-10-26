@@ -3,12 +3,6 @@ class Path < Maps
 	def initialize
 		super
 		@name = "Path"
-		@choices = ["Look",
-					"Fight",
-					"Item",
-					"Equip",
-					"Move"
-					]
 		
 	end
 
@@ -17,6 +11,12 @@ class Path < Maps
 	end
 
 	def map
+		@choices = ["Look",
+					"Fight",
+					"Item",
+					"Equip",
+					"Move"
+					]
 		@move_map = [$mountains]
 		anim("What do you want to do?")
 		puts "-----PATH-----"

@@ -3,12 +3,6 @@ class Cave < Maps
 	def initialize
 		super
 		@name = "Cave"
-		@choices = ["Look",
-					"Fight",
-					"Item",
-					"Equip",
-					"Move"
-					]
 		
 	end
 
@@ -17,6 +11,12 @@ class Cave < Maps
 	end
 
 	def map
+		@choices = ["Look",
+					"Fight",
+					"Item",
+					"Equip",
+					"Move"
+					]
 		@move_map = [$fields
 					]
 		anim("What do you want to do?")

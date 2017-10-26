@@ -3,13 +3,6 @@ class Water_village < Maps
 	def initialize
 		super
 		@name = "Water village"
-		@choices = ["Look",
-					"Shop",
-					"Item",
-					"Equip",
-					"Move",
-					"Rest"
-					]
 		
 	end
 
@@ -18,6 +11,15 @@ class Water_village < Maps
 	end
 
 	def map
+		@choices = ["Look",
+					"Shop",
+					"Item",
+					"Equip",
+					"Move",
+					"Rest",
+		      "#{$player.name}"
+    			]
+    $last_village = $water_village
 		@move_map = [$lake]
 		anim("What do you want to do?")
 		puts "-----Village-----"
@@ -44,7 +46,9 @@ class Water_village < Maps
 				self.move
 			when "Rest" then
 				self.rest
-		end
+		  when "#{$player.name}" then
+        $player.name
+    end
 	end
 end
 $water_village = Water_village.new

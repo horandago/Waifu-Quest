@@ -3,12 +3,6 @@ class Bridge < Maps
 	def initialize
 		super
 		@name = "Bridge"
-		@choices = ["Look",
-					"Fight",
-					"Item",
-					"Equip",
-					"Move"
-					]
 	end
 
 	def look
@@ -20,6 +14,12 @@ class Bridge < Maps
 	end
 
 	def map
+		@choices = ["Look",
+					"Fight",
+					"Item",
+					"Equip",
+					"Move"
+					]
 			@move_map = [$fields
 					]
 		if $map.level > 1
@@ -37,6 +37,7 @@ class Bridge < Maps
 			ans = gets.chomp.downcase.capitalize!
 		end
 		
+		puts ans
 		case ans
 		when "Item" then 
 			$inventory.list_items

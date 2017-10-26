@@ -17,3 +17,4 @@ class Potion < Items
 	end
 end
 
+

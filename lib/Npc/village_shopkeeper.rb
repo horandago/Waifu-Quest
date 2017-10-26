@@ -4,8 +4,9 @@ class Village_shopkeeper < Npc
 			POTION_COST = 25
 			MALLET_COST = 200
 			MAIL_COST = 50
+			ROPE_COST = 15
 	def initialize
-			@@shop_list = ['Good potion', 'Mallet', 'Chainmail', 'Exit']
+			@@shop_list = ['Good potion', 'Mallet', 'Rope', 'Chainmail', 'Exit']
 	end
 
 	def speak
@@ -14,6 +15,7 @@ class Village_shopkeeper < Npc
 		puts "----------"
 		puts "Buy\nSell\nExit"
 		puts "----------"
+    puts "#{$player.name}: #{$player.gp}gp"
 		ans = gets.chomp.downcase
 		until ans == "buy" || ans == "sell" || ans == "exit"
 			ans = gets.chomp.downcase
@@ -23,6 +25,7 @@ class Village_shopkeeper < Npc
 			puts "Good Potion - #{POTION_COST}gp"
 			puts "Mallet - #{MALLET_COST}gp"
 			puts "Chainmail - #{MAIL_COST}gp"
+      puts "Rope - #{ROPE_COST}gp"
 			puts "Exit"
 			puts "----------"
 			ans = gets.chomp.downcase.capitalize!
@@ -42,6 +45,14 @@ class Village_shopkeeper < Npc
 				else
 					anim("Shopkeeper: Yerp, if yer canny afford that, you got not business here I'm afraid")
 				end
+      when 'Rope'  
+        if $player.gp >= 15
+          puts "You purchase the potion for #{ROPE_COST}gp!"
+          $inventory.add_item(Rope.new)
+          $player.gp -= ROPE_COST
+        else
+          anim("Shopkeeper: Yerp, if yer canny afford that, you got not business here I'm afraid")
+        end
 			when 'Mallet'
       			if $player.gp >= 200
         			puts "You purchase the bronze sword for #{MALLET_COST}gp!"
