@@ -3,6 +3,7 @@ class Potion < Items
 		super
 		@name = "Potion"
 		@value = 5
+    @is_usable_battle = true
 	end
 
 	def use

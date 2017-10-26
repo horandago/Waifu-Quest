@@ -1,7 +1,7 @@
 class Inventory
 	attr_accessor :equipment, :items
 def initialize
-	@items = [Potion.new, $map]
+	@items = [Potion.new, $map, Feather.new, Rock.new, Goo.new]
 	@equipment = Array.new
 end
 
@@ -9,10 +9,12 @@ def use_item(item)
 	list = Hash.new
 	$inventory.items.each {|obj| list[obj] = obj.to_s}
 	list.each { |k,v| if item == k.to_s.downcase
-			k.use
 			if k.is_usable
+		    k.use
 				$inventory.items.delete(k)
-			else
+			elsif k.is_usable_multiple
+        k.use
+      else
 				anim("Nothing happens..")
 			end
 			break
@@ -23,21 +25,25 @@ end
 def use_item_battle(item)
   list = Hash.new
   $inventory.items.each {|obj| list[obj] = obj.to_s}
-  list.each { |k,v| if k.is_usable
-    if item == k.to_s.downcase
-      if $player.hp == $player.max_hp
-      	k.use
-				$inventory.items.delete(k)
-				break
-			else
-      	k.use
-				$inventory.items.delete(k)
-				$used = true
-				break
-			end
+  list.each { |k,v| 
+    if k.is_usable_battle
+      if item == k.to_s.downcase
+        if $player.hp == $player.max_hp
+        	k.use
+			  	$inventory.items.delete(k)
+		  		break
+		  	else
+        	k.use
+	  			$inventory.items.delete(k)
+	  			$used = true
+	  			break
+	  		end
+      end
+    else
+			if item == k.to_s.downcase
+			  puts "You cannot use that right now"
+      end
     end
-			puts "You cannot use that right now"
-  end
   }
 end
 
@@ -87,7 +93,7 @@ def sell(item)
 	@combine = @items + @equipment
 	@combine.each {|obj| selling[obj] = obj.to_s}
 	selling.each { |k,v| 
-			if k.is_junk
+			if item == v.downcase && k.is_junk
 				anim("Do you want to sell all of your #{item}(s)?(y/n)")
 				ans = gets.chomp.downcase
 				case ans
@@ -95,7 +101,6 @@ def sell(item)
 						@make = 0
 						@many = 0
 						selling.each {|k,v|
-							puts v
 							if item == v.downcase
 								@make += k.value
 								@many += 1

@@ -17,8 +17,7 @@ class Mountains < Maps
 	end
 
 	def map
-		@move_map = [$fields
-					]
+		@move_map = [$fields]
 		if $map.level > 1
       @move_map.push($path)
     end

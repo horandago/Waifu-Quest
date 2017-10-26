@@ -1,25 +1,24 @@
-class Path < Maps
+class Lake < Maps
 
 	def initialize
 		super
-		@name = "Path"
+		@name = "Lake"
 		@choices = ["Look",
 					"Fight",
 					"Item",
 					"Equip",
 					"Move"
 					]
-		
 	end
 
 	def look
-		anim("A narrow path on the edge of a cliff. It's getting rather hot...")
+		anim("A large, but shallow lake where you can barely see a path run through")
 	end
 
 	def map
-		@move_map = [$mountains]
+		@move_map = [$plains, $water_village, $waters]
 		anim("What do you want to do?")
-		puts "-----PATH-----"
+		puts "-----LAKE-----"
 		puts @choices
 		puts "--------------"
 		$player.info
@@ -35,7 +34,7 @@ class Path < Maps
 			$inventory.list_items
 			self.inventory
 		when "Fight" then
-			@monsters_list = [Fire_slime.new]	
+			@monsters_list = [Frog_girl.new]	
 			@enemy = @monsters_list.sample
 			anim("You encounter the #{@enemy.name}!")
 			@enemy.fight
@@ -44,9 +43,9 @@ class Path < Maps
 		when "Equip" then
 			self.equip
 		when "Move" then
-			self.move
+			move
 		end
 	end
 
 end
-$path = Path.new
+$lake = Lake.new

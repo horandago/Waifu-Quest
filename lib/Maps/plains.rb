@@ -16,7 +16,7 @@ class Plains < Maps
 	end
 
 	def map
-		@move_map = [$bridge, $village]
+		@move_map = [$bridge, $village, $lake]
 		anim("What do you want to do?")
 		puts "-----PLAINS-----"
 		puts @choices

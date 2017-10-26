@@ -7,6 +7,7 @@ class Map < Items
 		@value = nil
 		@is_sellable = false
 		@level = 1
+    @is_usable_multiple = true
 	end
 
 	def use

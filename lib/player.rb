@@ -7,7 +7,7 @@ class Player
 		@max_hp = 10
 		@hp = max_hp
 		@exp = 0
-		@gp = 0
+		@gp = 100
 		@weapon = Bare_fists.new
 		@armour = Shirt.new
 		@base_attack = 0
@@ -58,6 +58,7 @@ class Player
 		@max_hp = @max_hp * 1.2
 		@hp = @max_hp
 		anim("LEVEL UP!!")
+    $game.continue
 	end
 			
 	def equip(item)
@@ -96,6 +97,9 @@ class Player
 	def dead
 		anim("You died!")
 		$game.continue
+		@lose_gold = $player.gp / 10
+		$player.gp -= @lose_gold.to_i
+		anim("You lose #{@lose_gold.to_i}gp...")
 		anim("You wake up in your home town...")
 		$player.hp = $player.max_hp
 		$game.current_map = $home
