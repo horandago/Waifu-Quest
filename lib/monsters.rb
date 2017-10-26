@@ -11,7 +11,7 @@ class Monster
 
 	def hurt(amount)
 		@hp -= amount
-		puts "#{self.name} takes #{amount} damage!"
+		puts "#{self.name} takes #{amount} damage!".colorize(:green)
 	end
 
   def drop
@@ -23,7 +23,7 @@ class Monster
 			@grammar = "1 "
 		end
 		$player.gp += @drop_gold
-		anim("The #{self.name} dropped #{@grammar}#{@drop_item.to_s} and #{@drop_gold}gp!")
+		anim("The #{self.name} dropped #{@grammar}#{@drop_item.to_s} and #{@drop_gold}gp!".colorize(:green))
 	end
 
 	def fight
@@ -37,7 +37,7 @@ class Monster
 		case ans
 		when "attack", "a"
 			self.hurt($player.attack)
-			puts "#{self.name} attacks you!"
+			puts "#{self.name} attacks you!".colorize(:red)
 			if self.hp < 1
 				anim("You defeated the #{self.name.capitalize}!")
 				$player.exp(exp)
@@ -64,10 +64,10 @@ class Monster
 		when "look", "l"
 			self.description
 		when "run", "r"
-			anim("You try to escape!")
+			anim("You try to escape!".colorize(:blue))
 			self.action
 			if $player.hp > 0
-				anim("......You manage to escape!")
+				anim("......You manage to escape!".colorize(:green))
 				$game.continue
 				break
 			else

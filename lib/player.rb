@@ -7,7 +7,7 @@ class Player
 		@max_hp = 10
 		@hp = max_hp
 		@exp = 0
-		@gp = 100
+		@gp = 0
 		@weapon = Bare_fists.new
 		@armour = Shirt.new
 		@base_attack = 0
@@ -29,7 +29,7 @@ class Player
 			amount = 0
 		end
 		@hp -= amount
-		puts "You take #{amount} damage!"
+		puts "You take #{amount} damage!".colorize(:red)
 	end
 
 	def heal(amount)
@@ -57,7 +57,7 @@ class Player
 		@base_attack += 1
 		@max_hp = @max_hp * 1.2
 		@hp = @max_hp
-		anim("LEVEL UP!!")
+		anim("LEVEL UP!!".colorize(:green))
     $game.continue
 	end
 			
@@ -91,8 +91,12 @@ class Player
 	end
 
 	def info
-		puts "Level : #{@level} | GP: #{@gp} | Weapon: #{@weapon.to_s} | Armour: #{@armour.to_s} | Exp: #{@exp}/#{@exp_level_up.to_i}"
+		puts "Level : #{@level} | HP: #{self.hp}/#{self.max_hp} | GP: #{@gp} | Exp: #{@exp}/#{@exp_level_up.to_i}"
 	end
+
+  def character
+    anim("------#{$player.name}------\n Weapon: #{@weapon.to_s}\n Armour: #{@armour.to_s}\n-------------------")
+  end
 
 	def dead
 		anim("You died!")
@@ -100,9 +104,9 @@ class Player
 		@lose_gold = $player.gp / 10
 		$player.gp -= @lose_gold.to_i
 		anim("You lose #{@lose_gold.to_i}gp...")
-		anim("You wake up in your home town...")
+		anim("You wake up in the nearest village...")
 		$player.hp = $player.max_hp
-		$game.current_map = $home
+		$game.current_map = $last_village
 		return $game.current_map.map
 	end
 end

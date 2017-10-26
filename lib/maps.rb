@@ -45,5 +45,6 @@ class Maps
 	def rest
 		anim("You take a rest in the village's inn\nYou restore your hp!")
 		$player.hp = $player.max_hp
+    $game.continue
 	end
 end

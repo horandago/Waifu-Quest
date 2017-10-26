@@ -3,12 +3,6 @@ class Waters < Maps
 	def initialize
 		super
 		@name = "Waters"
-		@choices = ["Look",
-					"Fight",
-					"Item",
-					"Equip",
-					"Move"
-					]
 	end
 
 	def look
@@ -20,6 +14,12 @@ class Waters < Maps
 	end
 
 	def map
+		@choices = ["Look",
+					"Fight",
+					"Item",
+					"Equip",
+					"Move"
+					]
 			@move_map = [$lake
 					]
 #		if $map.level > 1

@@ -3,12 +3,6 @@ class Lake < Maps
 	def initialize
 		super
 		@name = "Lake"
-		@choices = ["Look",
-					"Fight",
-					"Item",
-					"Equip",
-					"Move"
-					]
 	end
 
 	def look
@@ -16,6 +10,12 @@ class Lake < Maps
 	end
 
 	def map
+		@choices = ["Look",
+					"Fight",
+					"Item",
+					"Equip",
+					"Move"
+					]
 		@move_map = [$plains, $water_village, $waters]
 		anim("What do you want to do?")
 		puts "-----LAKE-----"

@@ -3,13 +3,6 @@ class Village < Maps
 	def initialize
 		super
 		@name = "Village"
-		@choices = ["Look",
-					"Shop",
-					"Item",
-					"Equip",
-					"Move",
-					"Rest"
-					]
 		
 	end
 
@@ -18,6 +11,15 @@ class Village < Maps
 	end
 
 	def map
+		@choices = ["Look",
+					"Shop",
+					"Item",
+					"Equip",
+					"Move",
+					"Rest",
+		      "#{$player.name}"
+    			]
+    $last_village = $village
 		@move_map = [$plains]
 		anim("What do you want to do?")
 		puts "-----Village-----"
@@ -44,6 +46,8 @@ class Village < Maps
 				self.move
 			when "Rest" then
 				self.rest
+      when "#{$player.name}" then
+        $player.character
 		end
 	end
 end

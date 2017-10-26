@@ -3,12 +3,6 @@ class Plains < Maps
 	def initialize
 		super
 		@name = "Plains"
-		@choices = ["Look",
-					"Fight",
-					"Item",
-					"Equip",
-					"Move"
-					]
 	end
 
 	def look
@@ -16,6 +10,12 @@ class Plains < Maps
 	end
 
 	def map
+		@choices = ["Look",
+					"Fight",
+					"Item",
+					"Equip",
+					"Move"
+					]
 		@move_map = [$bridge, $village, $lake]
 		anim("What do you want to do?")
 		puts "-----PLAINS-----"

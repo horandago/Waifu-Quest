@@ -19,6 +19,7 @@ class Water_shopkeeper < Npc
 			puts "----------"
 			puts "Buy\nSell\nExit"
 			puts "----------"
+      puts "#{$player.name}: #{$player.gp}gp"
 			ans = gets.chomp.downcase
 			until ans == "buy" || ans == "sell" || ans == "exit"
 				ans = gets.chomp.downcase

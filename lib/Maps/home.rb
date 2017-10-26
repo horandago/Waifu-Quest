@@ -3,13 +3,6 @@ class Home < Maps
 	def initialize
 		super
 		@name = "Home"
-		@choices = ["Look",
-					"Shop",
-					"Item",
-					"Equip",
-					"Move",
-					"Rest"
-					]
 		
 	end
 
@@ -18,7 +11,16 @@ class Home < Maps
 	end
 
 	def map
-		@move_map = [$fields]
+		@choices = ["Look",
+					"Shop",
+					"Item",
+					"Equip",
+					"Move",
+					"Rest",
+          "#{$player.name}"
+					]
+    $last_village = $home
+  	@move_map = [$fields]
 		anim("What do you want to do?")
 		puts "-----HOME-----"
 		puts @choices
@@ -44,6 +46,8 @@ class Home < Maps
 				self.move
 			when "Rest" then
 				self.rest
+      when "#{$player.name}" then
+				$player.character
 		end
 	end
 end

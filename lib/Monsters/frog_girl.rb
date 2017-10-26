@@ -4,7 +4,7 @@ class Frog_girl < Monster
     @hp = 15
     @name = "Frog girl"
 		@attack_lo = 6
-    @attack_hi = 10
+    @attack_hi = 9 
 		@exp = 18
 		@items = [Good_potion.new, "nothing", "nothing"]
 		@gold_lo = 8
