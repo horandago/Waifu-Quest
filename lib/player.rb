@@ -1,10 +1,17 @@
 class Player
-	attr_reader :name 
-	attr_accessor :hp, :gp, :exp, :weapon, :max_hp, :base_attack, :level
+	attr_reader :name, :age, :race, :gender, :height, :name, :surname, :fullname
+	attr_accessor :hp, :gp, :exp, :weapon, :max_hp, :base_attack, :level, :hair_colour, :hair_style, :hair_length 
 		
-	def initialize(name)
+	def initialize(name, surname, fullname, age, gender, hair_colour, hair_length, hair_style, race, height)
 		@name = name
-		@max_hp = 10
+    @race = race
+    @age = age
+    @height = height
+    @gender = gender
+		@hair_colour = hair_colour
+    @hair_length = hair_length
+    @hair_style = hair_style
+    @max_hp = 10
 		@hp = max_hp
 		@exp = 0
 		@gp = 0
@@ -95,7 +102,7 @@ class Player
 	end
 
   def character
-    anim("------#{$player.name}------\n Weapon: #{@weapon.to_s}\n Armour: #{@armour.to_s}\n-------------------")
+    anim("------#{self.fullname}------\n Age: #{self.age}\n Gender: #{self.gender}\n Race: #{self.race}\n Height: #{self.height}\n Hair: #{hair_length} and #{hair_colour} in a #{hair_style} style\n Weapon: #{@weapon.to_s}\n Armour: #{@armour.to_s}\n-------------------")
   end
 
 	def dead
