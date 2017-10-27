@@ -4,7 +4,7 @@ class Large_harpy < Monster
     @hp = 13
     @name = "Large harpy"
 		@attack_lo = 4
-    @attack_hi = 8
+    @attack_hi = 7
 		@exp = 15
 		@items = [Good_potion.new, "nothing", "nothing"]
 		@gold_lo = 4

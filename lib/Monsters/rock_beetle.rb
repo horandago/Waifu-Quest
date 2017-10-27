@@ -7,8 +7,8 @@ class Rock_beetle < Monster
 		@attack_hi = 5
 		@exp = 10
 		@items = [Rope.new, Rock.new, "nothing"]
-		@gold_lo = 0
-		@gold_hi = 10
+		@gold_lo = 4
+		@gold_hi = 11
 	end
 	
 	def description

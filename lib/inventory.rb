@@ -1,7 +1,7 @@
 class Inventory
 	attr_accessor :equipment, :items
 def initialize
-	@items = [Potion.new, $map, Rope.new]
+	@items = [Potion.new, $map]
 	@equipment = Array.new
 end
 

@@ -37,13 +37,12 @@ class Monster
 		case ans
 		when "attack", "a"
 			self.hurt($player.attack)
-			puts "#{self.name} attacks you!".colorize(:red)
 			if self.hp < 1
 				anim("You defeated the #{self.name.capitalize}!")
 				$player.exp(exp)
 				self.drop
 				break
-			end
+      end
 		self.action 	
 		when "item", "i"
 			if $inventory.items.empty?

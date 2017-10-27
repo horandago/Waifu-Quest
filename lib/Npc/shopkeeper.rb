@@ -37,7 +37,8 @@ class Shopkeeper < Npc
 				return speak
 			when 'Potion' 	
 				if $player.gp >= 10
-					puts "You purchase the potion for #{POTION_COST}gp!"
+					puts "You purchase the potion for #{POTION_COST}gp!".colorize(:green)
+          $game.continue
 					$inventory.add_item(Potion.new)
 					$player.gp -= POTION_COST
 				else
@@ -45,7 +46,8 @@ class Shopkeeper < Npc
 				end
 			when 'Bronze sword'
       			if $player.gp >= 35
-        			puts "You purchase the bronze sword for #{SWORD_COST}gp!"
+        			puts "You purchase the bronze sword for #{SWORD_COST}gp!".colorize(:green)
+              $game.continue
         			$inventory.add_item(Bronze_sword.new)
         			$player.gp -= SWORD_COST
       			else
@@ -53,7 +55,8 @@ class Shopkeeper < Npc
       			end
 			when 'Chainmail'
       			if $player.gp >= 50
-        			puts "You purchase the chainmail for #{MAIL_COST}gp!"
+        			puts "You purchase the chainmail for #{MAIL_COST}gp!".colorize(:green)
+              $game.comtinue
         			$inventory.add_item(Chainmail.new)
         			$player.gp -= MAIL_COST
       			else

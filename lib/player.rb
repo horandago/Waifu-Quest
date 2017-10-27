@@ -4,6 +4,8 @@ class Player
 		
 	def initialize(name, surname, fullname, age, gender, hair_colour, hair_length, hair_style, race, height)
 		@name = name
+    @surname = surname
+    @fullname = fullname
     @race = race
     @age = age
     @height = height
@@ -43,10 +45,10 @@ class Player
 		if @hp + amount > @max_hp
 			diff = @max_hp - @hp
 			@hp = @max_hp
-			anim("You gain #{diff.to_i} HP!")
+			anim("You gain #{diff.to_i} HP!".colorize(:green))
 		else
 			@hp += amount
-			anim("You gain #{amount.to_i} HP!")
+			anim("You gain #{amount.to_i} HP!".colorize(:green))
 		end
 	end
 
@@ -63,6 +65,7 @@ class Player
 		@exp_level_up = @exp_level_up * 2.5
 		@base_attack += 1
 		@max_hp = @max_hp * 1.2
+    @max_hp = @max_hp.to_i
 		@hp = @max_hp
 		anim("LEVEL UP!!".colorize(:green))
     $game.continue

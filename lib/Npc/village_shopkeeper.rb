@@ -4,7 +4,7 @@ class Village_shopkeeper < Npc
 			POTION_COST = 25
 			MALLET_COST = 200
 			MAIL_COST = 50
-			ROPE_COST = 15
+			ROPE_COST = 10
 	def initialize
 			@@shop_list = ['Good potion', 'Mallet', 'Rope', 'Chainmail', 'Exit']
 	end
@@ -39,15 +39,17 @@ class Village_shopkeeper < Npc
 				return speak
 			when 'Good potion' 	
 				if $player.gp >= 25
-					puts "You purchase the potion for #{POTION_COST}gp!"
+					puts "You purchase the potion for #{POTION_COST}gp!".colorize(:green)
+          $game.continue
 					$inventory.add_item(Good_potion.new)
 					$player.gp -= POTION_COST
 				else
 					anim("Shopkeeper: Yerp, if yer canny afford that, you got not business here I'm afraid")
 				end
       when 'Rope'  
-        if $player.gp >= 15
-          puts "You purchase the potion for #{ROPE_COST}gp!"
+        if $player.gp >= 10
+          puts "You purchase the potion for #{ROPE_COST}gp!".colorize(:green)
+          $game.continue
           $inventory.add_item(Rope.new)
           $player.gp -= ROPE_COST
         else
@@ -55,7 +57,8 @@ class Village_shopkeeper < Npc
         end
 			when 'Mallet'
       			if $player.gp >= 200
-        			puts "You purchase the bronze sword for #{MALLET_COST}gp!"
+        			puts "You purchase the bronze sword for #{MALLET_COST}gp!".colorize(:green)
+              $game.continue
         			$inventory.add_item(Mallet.new)
         			$player.gp -= MALLET_COST
       			else
@@ -63,7 +66,8 @@ class Village_shopkeeper < Npc
       			end
 			when 'Chainmail'
       			if $player.gp >= 50
-        			puts "You purchase the chainmail for #{MAIL_COST}gp!"
+        			puts "You purchase the chainmail for #{MAIL_COST}gp!".colorize(:green)
+              $game.continue
         			$inventory.add_item(Chainmail.new)
         			$player.gp -= MAIL_COST
       			else
