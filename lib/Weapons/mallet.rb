@@ -4,8 +4,8 @@ class Mallet < Weapons
 	def initialize
 		super
 		@name = "Mallet"
-		@dmg_lo = 4
-		@dmg_hi = 6
+		@dmg_lo = 6
+		@dmg_hi = 10
 		@value = 100
 	end
 

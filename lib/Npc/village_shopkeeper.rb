@@ -2,7 +2,7 @@ require_relative '../npc.rb'
 
 class Village_shopkeeper < Npc
 			POTION_COST = 25
-			MALLET_COST = 200
+			MALLET_COST = 150
 			MAIL_COST = 50
 			ROPE_COST = 10
 	def initialize
@@ -38,7 +38,7 @@ class Village_shopkeeper < Npc
 			when 'Exit'
 				return speak
 			when 'Good potion' 	
-				if $player.gp >= 25
+				if $player.gp >= POTION_COST
 					puts "You purchase the potion for #{POTION_COST}gp!".colorize(:green)
           $game.continue
 					$inventory.add_item(Good_potion.new)
@@ -47,7 +47,7 @@ class Village_shopkeeper < Npc
 					anim("Shopkeeper: Yerp, if yer canny afford that, you got not business here I'm afraid")
 				end
       when 'Rope'  
-        if $player.gp >= 10
+        if $player.gp >= ROPE_COST
           puts "You purchase the potion for #{ROPE_COST}gp!".colorize(:green)
           $game.continue
           $inventory.add_item(Rope.new)
@@ -56,7 +56,7 @@ class Village_shopkeeper < Npc
           anim("Shopkeeper: Yerp, if yer canny afford that, you got not business here I'm afraid")
         end
 			when 'Mallet'
-      			if $player.gp >= 200
+      			if $player.gp >= MALLET_COST
         			puts "You purchase the bronze sword for #{MALLET_COST}gp!".colorize(:green)
               $game.continue
         			$inventory.add_item(Mallet.new)
@@ -65,7 +65,7 @@ class Village_shopkeeper < Npc
         			anim("Shopkeeper: Gotta spend a bit more than that!")
       			end
 			when 'Chainmail'
-      			if $player.gp >= 50
+      			if $player.gp >= MAIL_COST
         			puts "You purchase the chainmail for #{MAIL_COST}gp!".colorize(:green)
               $game.continue
         			$inventory.add_item(Chainmail.new)

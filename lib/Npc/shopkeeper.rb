@@ -56,7 +56,7 @@ class Shopkeeper < Npc
 			when 'Chainmail'
       			if $player.gp >= 50
         			puts "You purchase the chainmail for #{MAIL_COST}gp!".colorize(:green)
-              $game.comtinue
+              $game.continue
         			$inventory.add_item(Chainmail.new)
         			$player.gp -= MAIL_COST
       			else

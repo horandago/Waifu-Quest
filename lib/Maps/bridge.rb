@@ -37,7 +37,6 @@ class Bridge < Maps
 			ans = gets.chomp.downcase.capitalize!
 		end
 		
-		puts ans
 		case ans
 		when "Item" then 
 			$inventory.list_items

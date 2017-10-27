@@ -17,6 +17,9 @@ class Forest < Maps
 
 	def map
 		@move_map = [$plains, $gate]
+    if $inventory.items.include? $secret_map
+      @move_map.push($hut)
+    end
 		anim("What do you want to do?")
 		puts "-----FOREST-----"
 		puts @choices

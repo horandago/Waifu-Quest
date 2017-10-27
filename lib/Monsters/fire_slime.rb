@@ -4,9 +4,9 @@ class Fire_slime < Monster
     @hp = 18
     @name = "Fire slime"
     @attack_lo = 6
-		@attack_hi = 11
-		@exp = 15
-		@items = [Good_potion.new, "nothing"]
+		@attack_hi = 10
+		@exp = 20
+		@items = [Good_potion.new, Rope.new, "nothing"]
 		@gold_lo = 5
 		@gold_hi = 15
 	end

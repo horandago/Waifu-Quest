@@ -34,7 +34,7 @@ class Lake < Maps
 			$inventory.list_items
 			self.inventory
 		when "Fight" then
-			@monsters_list = [Frog_girl.new]	
+			@monsters_list = [Frog_girl.new, Mermaid.new]	
 			@enemy = @monsters_list.sample
 			anim("You encounter the #{@enemy.name}!")
 			@enemy.fight
