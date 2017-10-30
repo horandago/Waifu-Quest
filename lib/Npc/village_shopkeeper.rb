@@ -57,7 +57,7 @@ class Village_shopkeeper < Npc
         end
 			when 'Mallet'
       			if $player.gp >= MALLET_COST
-        			puts "You purchase the bronze sword for #{MALLET_COST}gp!".colorize(:green)
+        			puts "You purchase the mallet for #{MALLET_COST}gp!".colorize(:green)
               $game.continue
         			$inventory.add_item(Mallet.new)
         			$player.gp -= MALLET_COST

@@ -16,12 +16,13 @@ class Player
     @max_hp = 10
 		@hp = max_hp
 		@exp = 0
-		@gp = 100
+		@gp = 0
 		@weapon = Bare_fists.new
 		@armour = Shirt.new
 		@base_attack = 0
 		@level = 1
 		@exp_level_up = 50
+    @curve = 75
 	end
 
 	def alive?
@@ -62,11 +63,12 @@ class Player
 
 	def level_up
 		@level += 1
-		@exp_level_up = @exp_level_up * 2.5
+		@exp_level_up = @exp_level_up + @curve
 		@base_attack += 1
 		@max_hp = @max_hp * 1.2
     @max_hp = @max_hp.to_i
 		@hp = @max_hp
+    @curve = @curve  * 1.35
 		anim("LEVEL UP!!".colorize(:green))
     $game.continue
 	end

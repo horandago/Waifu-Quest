@@ -16,7 +16,7 @@ class Plains < Maps
 					"Equip",
 					"Move"
 					]
-		@move_map = [$bridge, $village, $lake]
+		@move_map = [$bridge, $village, $lake, $forest]
 		anim("What do you want to do?")
 		puts "-----PLAINS-----"
 		puts @choices
