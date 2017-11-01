@@ -1,13 +1,16 @@
-class Path < Maps
+class Volcano < Maps
 
 	def initialize
 		super
-		@name = "Path"
-		
+		@name = "Volcano"
 	end
 
 	def look
-		anim("A narrow path on the edge of a cliff. It's getting rather hot...")
+		if $lava_golem.alive?
+			anim("A menacing volcano housing an enormous lava golem")
+		else
+			anim("A raging volcano with lava spurting out everywhere")
+		end
 	end
 
 	def map
@@ -17,11 +20,12 @@ class Path < Maps
 					"Equip",
 					"Move"
 					]
-		@move_map = [$mountains, $volcano]
+			@move_map = [$path
+					]
 		anim("What do you want to do?")
-		puts "-----PATH-----"
+		puts "-----VOLCANO-----"
 		puts @choices
-		puts "--------------"
+		puts "----------------"
 		$player.info
 		print "\n: "
 		ans = gets.chomp.downcase.capitalize!
@@ -35,10 +39,13 @@ class Path < Maps
 			$inventory.list_items
 			self.inventory
 		when "Fight" then
-			@monsters_list = [Fire_slime.new]	
-			@enemy = @monsters_list.sample
-			anim("You encounter the #{@enemy.name}!")
-			@enemy.fight
+			if $hydra.alive?
+				anim("You encounter the Lava Golem!")
+				$lava_golem.hp = 50
+				$lava_golem.fight
+			else
+				anim("It's too hot for much else to survive here!")
+			end
 		when "Look" then
 			self.look
 		when "Equip" then
@@ -49,4 +56,4 @@ class Path < Maps
 	end
 
 end
-$path = Path.new
+$volcano = Volcano.new

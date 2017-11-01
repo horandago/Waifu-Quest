@@ -39,8 +39,7 @@ class Monster
 			self.hurt($player.attack)
 			if self.hp < 1
 				anim("You defeated the #{self.name.capitalize}!")
-				#$player.exp(exp)
-        $player.exp(40)
+				$player.exp(exp)
 				self.drop
 				break
       end

@@ -24,9 +24,9 @@ puts "
          			\\>
 "
 
-$race_list = ["Human", "Elf", "Cat person", "Vampire"]
+$race_list = ["Human", "Elf", "Neko", "Vampire"]
 $hair_colour_list = ["Black","Brown","Blonde","White","Pink","Red","Purple","Blue","Green"]
-$hair_length_list = ["Long","Medium","Short","Boyish"]
+$hair_length_list = ["Long","Medium","Short"]
 $hair_style_list = ["Curly","Straight","Wavy","Bob","Messy","Pony tail","Buns","Twin tails","Side pony tail"]
 $gender_list = ["Male", "Female"]
 
@@ -37,6 +37,33 @@ def ynchoice
       $ans = gets.chomp.downcase
     end
 end
+
+class Game
+	attr_accessor :current_map
+	def initialize
+		$inventory = Inventory.new
+		@current_map = $home	
+	end
+
+	def play_game
+		while $player.alive?
+			@current_map.map
+		end
+	end
+
+	def continue
+	  print "*press any key to continue*"
+	  STDIN.getch
+	  print "\r"
+	  puts "------------------------------"
+	end
+
+  def character_creation
+    $race_list = ["Human", "Elf", "Cat person", "Vampire"]
+    $hair_colour_list = ["Black","Brown","Blonde","White","Pink","Red","Purple","Blue","Green"]
+    $hair_length_list = ["Long","Medium","Short","Boyish"]
+    $hair_style_list = ["Curly","Straight","Wavy","Bob","Messy","Pony tail","Buns","Twin tails","Side pony tail"]
+    $gender_list = ["Male", "Female"]
 
 #First Name
 anim("What is your first name?:")
@@ -74,7 +101,7 @@ if $ans == 'y'
     hair_length = $hair_length_list.sample
     hair_style = $hair_style_list.sample
   	height = rand(155..175)
-    anim("#{fullname} is #{height}cm tall, A #{gender} #{race}, \nYou have #{hair_length} #{hair_colour} hair in a #{hair_style} style")
+    anim("#{fullname} is #{height}cm tall, A #{age}-year-old #{gender} #{race}, \nYou have #{hair_length} #{hair_colour} hair in a #{hair_style} style")
     anim("Is that correct?(y/n)")
     answer = gets.chomp.downcase
       until answer == "y" || answer == "n"
@@ -123,63 +150,45 @@ elsif $ans == 'n'
     retry
   end
  
-  #Hair
-  anim("What colour is your hair?")
-  puts "----------"
-  puts $hair_colour_list
-  puts "----------"
-  hair_colour = gets.chomp.downcase.capitalize!
-  until $hair_colour_list.include? hair_colour
-  	anim("Please type that correctly")
-  	hair_colour = gets.chomp.downcase.capitalize!
+      #Hair
+      anim("What colour is your hair?")
+      puts "----------"
+      puts $hair_colour_list
+      puts "----------"
+      hair_colour = gets.chomp.downcase.capitalize!
+      until $hair_colour_list.include? hair_colour
+      	anim("Please type that correctly")
+      	hair_colour = gets.chomp.downcase.capitalize!
+      end
+      anim("How long is your hair?")
+      puts "----------"
+      puts $hair_length_list
+      puts "----------"
+      hair_length = gets.chomp.downcase.capitalize!
+      until $hair_length_list.include? hair_length
+      	anim("Please type that correctly")
+      	hair_length = gets.chomp.downcase.capitalize!
+      end
+      anim("What style is your hair?")
+      puts "----------"
+      puts $hair_style_list
+      puts "----------"
+      hair_style = gets.chomp.downcase.capitalize!
+      until $hair_style_list.include? hair_style
+        anim("Please type that correctly")
+        hair_style = gets.chomp.downcase.capitalize!
+      end
+    end
+
+    $player = Player.new(name, surname, fullname, age, gender, hair_colour, hair_length, hair_style, race, height)
+
+    $player.character
+
+    anim("Welcome, #{$player.name}! Your adventure begins!!".colorize(:green))
   end
-  anim("How long is your hair?")
-  puts "----------"
-  puts $hair_length_list
-  puts "----------"
-  hair_length = gets.chomp.downcase.capitalize!
-  until $hair_length_list.include? hair_length
-  	anim("Please type that correctly")
-  	hair_length = gets.chomp.downcase.capitalize!
-  end
-  anim("What style is your hair?")
-  puts "----------"
-  puts $hair_style_list
-  puts "----------"
-  hair_style = gets.chomp.downcase.capitalize!
-  until $hair_style_list.include? hair_style
-    anim("Please type that correctly")
-    hair_style = gets.chomp.downcase.capitalize!
-  end
-end
-
-$player = Player.new(name, surname, fullname, age, gender, hair_colour, hair_length, hair_style, race, height)
-
-$player.character
-
-anim("Welcome, #{$player.name}! Your adventure begins!!".colorize(:green))
-
-class Game
-	attr_accessor :current_map
-	def initialize
-		$inventory = Inventory.new
-		@current_map = $home	
-	end
-
-	def play_game
-		while $player.alive?
-			@current_map.map
-		end
-	end
-
-	def continue
-	  print "*press any key to continue*"
-	  STDIN.getch
-	  print "\r"
-	  puts "------------------------------"
-	end
 
 end
 
 $game = Game.new
+$game.character_creation
 $game.play_game
