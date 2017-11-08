@@ -39,7 +39,7 @@ class Volcano < Maps
 			$inventory.list_items
 			self.inventory
 		when "Fight" then
-			if $hydra.alive?
+			if $lava_golem.alive?
 				anim("You encounter the Lava Golem!")
 				$lava_golem.hp = 50
 				$lava_golem.fight

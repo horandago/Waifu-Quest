@@ -1,20 +1,21 @@
-class Lava_golem < Monster
+class Wizard < Monster
   def initialize
     super
-    @hp = 50
-    @name = "Lava Golem"
+    @hp = 40
+    @name = "Wizard"
     @attack_lo = 9
-		@attack_hi = 15
+		@attack_hi = 18
 		@exp = 300
 		@is_boss = true
 	end
 	
 	def description
-		anim("A gigantic rock golem dripping with molten lava")
+		anim("A dark looking wizard but with glowing white hair")
 	end
 
 	def action
-		anim("The golem hurls its giant fists at you!")
+    @element = ["fire", "water", "wind", "earth"]
+		anim("The wizard casts a #{@element.sample} spell at you")
 		$player.hurt(rand(@attack_lo...@attack_hi))
 	end
 
@@ -25,11 +26,13 @@ class Lava_golem < Monster
   def drop
 		@drop_item = $secret_map
     @drop_gold = 300
+		$map.level = 3
     $inventory.add_item(@drop_item)
     $player.gp += @drop_gold
     anim("The #{self.name} dropped #{@grammar}#{@drop_item.to_s} and #{@drop_gold}gp!")
-  end
+    anim("Your map has been updated!".colorize(:green)) 
+ end
 
 end
 
-$lava_golem = Lava_golem.new
+$wizard = Wizard.new

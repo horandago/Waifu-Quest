@@ -6,7 +6,7 @@ class Fire_slime < Monster
     @attack_lo = 6
 		@attack_hi = 10
 		@exp = 20
-		@items = [Good_potion.new, Rope.new, "nothing"]
+		@items = [Good_potion.new, Rope.new, Goo.new, "nothing"]
 		@gold_lo = 5
 		@gold_hi = 15
 	end

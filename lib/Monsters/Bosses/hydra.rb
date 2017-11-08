@@ -24,7 +24,6 @@ class Hydra < Monster
 
   def drop
 		@drop_item = Mithril.new
-		$map.level = 3
     @drop_gold = 100
     $inventory.add_item(@drop_item)
     $player.gp += @drop_gold

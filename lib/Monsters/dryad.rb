@@ -4,7 +4,7 @@ class Dryad < Monster
     @hp = 15
     @name = "Dryad"
 		@attack_lo = 3
-    @attack_hi = 8
+    @attack_hi = 7
 		@exp = 17
 		@items = [Rope.new, Good_potion.new, "nothing"]
 		@gold_lo = 5

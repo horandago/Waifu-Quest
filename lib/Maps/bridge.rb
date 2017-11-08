@@ -6,7 +6,7 @@ class Bridge < Maps
 	end
 
 	def look
-		if $bandit_queen.alive?
+		if $tsundere_bandit.alive?
 			anim("A long bridge over a river being guarded by a strong looking bandit")
 		else
 			anim("A long rickety bridge over a deep river")
@@ -42,9 +42,9 @@ class Bridge < Maps
 			$inventory.list_items
 			self.inventory
 		when "Fight" then
-			if $bandit_queen.alive?
-				anim("Bandit Queen: \"Stop right there! Pay a fine or be gone!\"")
-				anim("Bandit Queen: \"500gp if you don't mind!!\"")
+			if $tsundere_bandit.alive?
+				anim("Tsundere Bandit: \"Stop right there! Pay a fine or be gone!\"")
+				anim("Tsundere Bandit: \"500gp if you don't mind!!\"")
 				$game.continue
 				anim("What do you do?:")
 				puts "-----\nPay\nFight\n-----"
@@ -54,8 +54,8 @@ class Bridge < Maps
 						anim("(Of course you won't actually pay this...)")
 					when "fight" then
 					anim("You encounter the queen of the bandits!")
-					$bandit_queen.hp = 15
-					$bandit_queen.fight
+					$tsundere_bandit.hp = 15
+					$tsundere_bandit.fight
 				end
 			else
 				anim("You have already reclaimed the bridge!")

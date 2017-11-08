@@ -12,8 +12,8 @@ class Gate < Maps
 	end
 
 	def look
-		if $bandit_queen.alive?
-			anim("A large gate covered in ivy guarded by ----")
+		if $Wizard.alive?
+			anim("A large gate covered in ivy...you sense a foul magic here")
 		else
 			anim("A large open gate leading towards darkness...")
 		end

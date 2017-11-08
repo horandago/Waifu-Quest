@@ -37,7 +37,7 @@ class Forest < Maps
 			$inventory.list_items
 			self.inventory
 		when "Fight" then
-			@monsters_list = [Large_harpy.new]	
+			@monsters_list = [Giant_spider.new]	
 			@enemy = @monsters_list.sample
 			anim("You encounter the #{@enemy.name}!")
 			@enemy.fight
