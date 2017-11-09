@@ -45,7 +45,6 @@ class Gate < Maps
 			if $wizard.alive?
 					$wizard.hp = 40
 					$wizard.fight
-				end
 			else
 				anim("You have already reclaimed the bridge!")
 			end

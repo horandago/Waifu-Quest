@@ -42,7 +42,7 @@ class Game
 	attr_accessor :current_map
 	def initialize
 		$inventory = Inventory.new
-		@current_map = $home	
+		@current_map = $village	
 	end
 
 	def play_game

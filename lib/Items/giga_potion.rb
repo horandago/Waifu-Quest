@@ -2,7 +2,7 @@ class Giga_potion < Items
 	def initialize
 		super
 		@name = "Giga potion"
-		@value = 10
+		@price = 50
     @is_usable_battle = true
 	end
 

@@ -6,7 +6,7 @@ class Rapier < Weapons
 		@name = "Rapier"
 		@dmg_lo = 2
 		@dmg_hi = 6
-		@value = 35
+		@price = 70
 	end
 
 	def description

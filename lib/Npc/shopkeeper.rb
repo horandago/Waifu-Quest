@@ -6,6 +6,7 @@ class Shopkeeper < Npc
 			MAIL_COST = 50
 	def initialize
 			@@shop_list = ['Potion', 'Bronze sword', 'Chainmail', 'Exit']
+      @deny = "Shopkeeper: Take your peasant money elsewhere!"
 	end
 
 	def speak
@@ -36,32 +37,11 @@ class Shopkeeper < Npc
 			when 'Exit'
 				return speak
 			when 'Potion' 	
-				if $player.gp >= 10
-					puts "You purchase the potion for #{POTION_COST}gp!".colorize(:green)
-          $game.continue
-					$inventory.add_item(Potion.new)
-					$player.gp -= POTION_COST
-				else
-					anim("Shopkeeper: You're too poor to buy a..potion? Begone, peasant!")
-				end
+				$inventory.buy(Potion.new, self)
 			when 'Bronze sword'
-      			if $player.gp >= 35
-        			puts "You purchase the bronze sword for #{SWORD_COST}gp!".colorize(:green)
-              $game.continue
-        			$inventory.add_item(Bronze_sword.new)
-        			$player.gp -= SWORD_COST
-      			else
-        			anim("Shopkeeper: Take your peasant money elsewhere!")
-      			end
-			when 'Chainmail'
-      			if $player.gp >= 50
-        			puts "You purchase the chainmail for #{MAIL_COST}gp!".colorize(:green)
-              $game.continue
-        			$inventory.add_item(Chainmail.new)
-        			$player.gp -= MAIL_COST
-      			else
-      	  		anim("Shopkeeper: Take your peasant money elsewhere!")
-      			end
+			  $inventory.buy(Bronze_sword.new, self)
+      when 'Chainmail'
+      	$inventory.buy(Chainmail.new, self)
 			end
 		elsif ans == "sell"
 			$inventory.list_all_items_price

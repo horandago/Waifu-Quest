@@ -4,7 +4,7 @@ class Mithril < Armour
 		super
 		@name = "Mithril plate"
 		@defence = 3
-		@value = 100
+		@price = 200
 	end
 end
 

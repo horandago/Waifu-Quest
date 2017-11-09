@@ -4,7 +4,7 @@ class Map < Items
 		super
 		@is_usable = false
 		@name = "Map"
-		@value = nil
+		@price = nil
 		@is_sellable = false
 		@level = 1
     @is_usable_multiple = true

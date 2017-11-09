@@ -104,7 +104,8 @@ def sell(item)
 						@many = 0
 						selling.each {|k,v|
 							if item == v.downcase
-								@make += k.value
+								@make += k.price / 2
+                @make = @make.to_i
 								@many += 1
 								$inventory.items.delete(k)
 							end }
@@ -130,4 +131,21 @@ def sell(item)
 	}
 end
 
+  def buy(item, seller)
+    if $player.gp >= item.price
+  		$inventory.add_item(item)
+      $player.gp -= item.price
+      anim("You purchase the #{item.to_s}!".colorize(:green))
+      if item.is_equipment
+        anim("Do you want to equip the #{item.to_s}?(y/n)")
+        ynchoice
+        case $ans
+          when "yes","y"
+            $player.equip(item.to_s.downcase!)
+         end
+      end
+    else
+      anim("#{seller.deny}")
+    end
+  end
 end

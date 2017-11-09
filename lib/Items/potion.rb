@@ -2,8 +2,8 @@ class Potion < Items
 	def initialize
 		super
 		@name = "Potion"
-		@value = 5
     @is_usable_battle = true
+		@price = 10
 	end
 
 	def use

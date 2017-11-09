@@ -1,6 +1,6 @@
 
 class Items
-	attr_reader :is_usable, :value, :is_item, :is_equipment, :is_armour, :is_weapon, :is_sellable, :is_junk, :is_usable_battle, :is_usable_multiple
+	attr_reader :is_usable, :price, :is_item, :is_equipment, :is_armour, :is_weapon, :is_sellable, :is_junk, :is_usable_battle, :is_usable_multiple
 	def initialize
 		@is_usable = true
 		@is_item = true
