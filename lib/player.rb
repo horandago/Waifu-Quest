@@ -16,7 +16,7 @@ class Player
     @max_hp = 10
 		@hp = max_hp
 		@exp = 0
-		@gp = 0
+		@gp = 35
 		@weapon = Bare_fists.new
 		@armour = Shirt.new
 		@base_attack = 0

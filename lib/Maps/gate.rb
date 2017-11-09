@@ -12,7 +12,7 @@ class Gate < Maps
 	end
 
 	def look
-		if $Wizard.alive?
+		if $wizard.alive?
 			anim("A large gate covered in ivy...you sense a foul magic here")
 		else
 			anim("A large open gate leading towards darkness...")
@@ -42,20 +42,9 @@ class Gate < Maps
 			$inventory.list_items
 			self.inventory
 		when "Fight" then
-			if $bandit_queen.alive?
-				anim("Bandit Queen: \"Stop right there! Pay a fine or be gone!\"")
-				anim("Bandit Queen: \"500gp if you don't mind!!\"")
-				$game.continue
-				anim("What do you do?:")
-				puts "-----\nPay\nFight\n-----"
-				ans = gets.chomp.downcase
-				case ans
-					when "pay" then
-						anim("(Of course you won't actually pay this...)")
-					when "fight" then
-					anim("You encounter the queen of the bandits!")
-					$bandit_queen.hp = 15
-					$bandit_queen.fight
+			if $wizard.alive?
+					$wizard.hp = 40
+					$wizard.fight
 				end
 			else
 				anim("You have already reclaimed the bridge!")
