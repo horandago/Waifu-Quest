@@ -3,7 +3,7 @@ class Shirt < Armour
 		super
 		@name = "Shirt"
 		@defence = 0
-		@value = 5
+		@price = 10
 	end
 end
 $shirt = Shirt.new

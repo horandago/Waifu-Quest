@@ -38,26 +38,12 @@ class Water_shopkeeper < Npc
 				end
 		
 				case ans
-				when 'Exit'
-					return speak
-				when 'Good potion' 	
-					if $player.gp >= 25
-						puts "You purchase the potion for #{POTION_COST}gp!".colorize(:green)
-            $game.continue
-						$inventory.add_item(Good_potion.new)
-						$player.gp -= POTION_COST
-					else
-						anim("Shopkeeper: Yerp, if yer canny afford that, you got not business here I'm afraid")
-					end
-				when 'Mallet'
- 	     			if $player.gp >= 200
- 	       			puts "You purchase the bronze sword for #{MALLET_COST}gp!".colorize(:green)
-              $game.continue
- 	       			$inventory.add_item(Mallet.new)
- 	       			$player.gp -= MALLET_COST
- 	     			else
- 	       			anim("Shopkeeper: Gotta spend a bit more than that!")
- 	     			end
+					when 'Exit'
+						return speak
+					when 'Good potion' 	
+	        	$inventory.buy(Good_potion.new, self)
+					when 'Mallet'
+        		$inventory.buy(Chainmail.new, self)
 				end
 			elsif ans == "sell"
 				$inventory.list_all_items_price

@@ -4,7 +4,7 @@ class Secret_map < Items
 		super
 		@is_usable = false
 		@name = "Secret map"
-		@value = nil
+		@price = nil
 		@is_sellable = false
     @is_usable_multiple = true
 	end

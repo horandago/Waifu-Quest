@@ -6,7 +6,7 @@ class Dark_blade < Weapons
 		@name = "Dark blade"
 		@dmg_lo = 10
 		@dmg_hi = 15
-		@value = 250
+		@price = 500
 	end
 
 	def description

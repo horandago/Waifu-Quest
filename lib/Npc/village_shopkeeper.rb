@@ -5,6 +5,7 @@ class Village_shopkeeper < Npc
 			MALLET_COST = 150
 			MAIL_COST = 50
 			ROPE_COST = 10
+      @deny = "Shopkeeper: Yerp, if yer canny afford that, you got not business here I'm afraid"
 	def initialize
 			@@shop_list = ['Good potion', 'Mallet', 'Rope', 'Chainmail', 'Exit']
 	end
@@ -38,41 +39,13 @@ class Village_shopkeeper < Npc
 			when 'Exit'
 				return speak
 			when 'Good potion' 	
-				if $player.gp >= POTION_COST
-					puts "You purchase the potion for #{POTION_COST}gp!".colorize(:green)
-          $game.continue
-					$inventory.add_item(Good_potion.new)
-					$player.gp -= POTION_COST
-				else
-					anim("Shopkeeper: Yerp, if yer canny afford that, you got not business here I'm afraid")
-				end
+				$inventory.buy(Good_potion.new, self)
       when 'Rope'  
-        if $player.gp >= ROPE_COST
-          puts "You purchase the potion for #{ROPE_COST}gp!".colorize(:green)
-          $game.continue
-          $inventory.add_item(Rope.new)
-          $player.gp -= ROPE_COST
-        else
-          anim("Shopkeeper: Yerp, if yer canny afford that, you got not business here I'm afraid")
-        end
-			when 'Mallet'
-      			if $player.gp >= MALLET_COST
-        			puts "You purchase the mallet for #{MALLET_COST}gp!".colorize(:green)
-              $game.continue
-        			$inventory.add_item(Mallet.new)
-        			$player.gp -= MALLET_COST
-      			else
-        			anim("Shopkeeper: Gotta spend a bit more than that!")
-      			end
+        $inventory.buy(Rope.new, self)		
+    	when 'Mallet'
+      	$inventory.buy(Mallet.new, self)
 			when 'Chainmail'
-      			if $player.gp >= MAIL_COST
-        			puts "You purchase the chainmail for #{MAIL_COST}gp!".colorize(:green)
-              $game.continue
-        			$inventory.add_item(Chainmail.new)
-        			$player.gp -= MAIL_COST
-      			else
-      	  		anim("Shopkeeper: Take your peasant money elsewhere!")
-      			end
+        $inventory.buy(Chainmail.new, self)
 			end
 		elsif ans == "sell"
 			$inventory.list_all_items_price

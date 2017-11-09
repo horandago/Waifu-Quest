@@ -16,10 +16,10 @@ class Player
     @max_hp = 10
 		@hp = max_hp
 		@exp = 0
-		@gp = 35
+		@gp = 5000
 		@weapon = Bare_fists.new
 		@armour = Shirt.new
-		@base_attack = 0
+		@base_attack = 100
 		@level = 1
 		@exp_level_up = 50
     @curve = 75
@@ -82,7 +82,7 @@ class Player
 				$inventory.equipment.push(@weapon) if @weapon != nil	
 				$inventory.equipment.delete(k)
 				@weapon = k
-				anim("You equip the #{@weapon.to_s}")
+				anim("You equip the #{@weapon.to_s}".colorize(:green))
 				break
 				end
 			end
@@ -91,7 +91,7 @@ class Player
       				$inventory.equipment.push(@armour) if @armour != nil
       				$inventory.equipment.delete(k)
       				@armour = k
-					anim("You put on the #{@armour.to_s}")
+					anim("You put on the #{@armour.to_s}".colorize(:green))
 					break
       			end
       		end

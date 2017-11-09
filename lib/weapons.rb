@@ -1,5 +1,5 @@
 class Weapons
-	attr_reader :is_weapon, :is_armour, :value, :is_item, :is_equipment, :is_usable, :is_sellable, :is_junk
+	attr_reader :is_weapon, :is_armour, :price, :is_item, :is_equipment, :is_usable, :is_sellable, :is_junk
 	def initialize
 		@is_weapon = true
 		@is_armour = false

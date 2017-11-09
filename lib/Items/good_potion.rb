@@ -2,7 +2,7 @@ class Good_potion < Items
 	def initialize
 		super
 		@name = "Good potion"
-		@value = 12
+		@price = 25
     @is_usable_battle = true
 	end
 

@@ -4,7 +4,7 @@ class Bare_fists < Weapons
 		@dmg_lo = 1
 		@dmg_hi = 2
 		@name = "Bare fists"
-		@value = 5
+		@price = 10 
 	end
 	
 	def dmg

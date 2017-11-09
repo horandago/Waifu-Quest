@@ -2,7 +2,7 @@ class Rope < Items
 	def initialize
 		super
 		@name = "Rope"
-		@value = 5
+		@price = 10
 	end
 
 	def use
