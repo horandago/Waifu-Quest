@@ -42,7 +42,7 @@ class Game
 	attr_accessor :current_map
 	def initialize
 		$inventory = Inventory.new
-		@current_map = $village	
+		@current_map = $home	
 	end
 
 	def play_game
@@ -61,7 +61,7 @@ class Game
   def character_creation
     $race_list = ["Human", "Elf", "Cat person", "Vampire"]
     $hair_colour_list = ["Black","Brown","Blonde","White","Pink","Red","Purple","Blue","Green"]
-    $hair_length_list = ["Long","Medium","Short","Boyish"]
+    $hair_length_list = ["Long","Medium","Short"]
     $hair_style_list = ["Curly","Straight","Wavy","Bob","Messy","Pony tail","Buns","Twin tails","Side pony tail"]
     $gender_list = ["Male", "Female"]
 
