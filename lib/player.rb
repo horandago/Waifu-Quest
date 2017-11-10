@@ -1,6 +1,6 @@
 class Player
 	attr_reader :name, :age, :race, :gender, :height, :name, :surname, :fullname
-	attr_accessor :hp, :gp, :exp, :weapon, :max_hp, :base_attack, :level, :hair_colour, :hair_style, :hair_length 
+	attr_accessor :hp, :gp, :exp, :weapon, :max_hp, :base_attack, :level, :hair_colour, :hair_style, :hair_length, :skills 
 		
 	def initialize(name, surname, fullname, age, gender, hair_colour, hair_length, hair_style, race, height)
 		@name = name
@@ -19,6 +19,7 @@ class Player
 		@gp = 0
 		@weapon = Bare_fists.new
 		@armour = Shirt.new
+		@skills = [Fireball.new]
 		@base_attack = 0
 		@level = 1
 		@exp_level_up = 50

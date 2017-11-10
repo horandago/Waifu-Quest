@@ -32,7 +32,7 @@ class Monster
 			puts "#{$player.name}: #{$player.hp.to_i}HP | #{self.name}: #{self.hp}HP"
 			puts "-------------------------"
 			anim("What do you want to do?")
-			puts "------\nAttack\nItem\nLook\nRun\n------"
+			puts "------\nAttack\nSkill\nItem\nLook\nRun\n------"
 			ans = gets.chomp.downcase
 			case ans
 				when "attack", "a"
@@ -72,7 +72,12 @@ class Monster
 					else
 						$player.dead
 						break
-					end	
+					end
+				when "skill", "s"
+					puts "Which skill do you want to use?\n----------"
+					$player.skills.each {|k| puts k.to_s }
+					puts "----------"
+					self.hurt($fireball.cast)
 			end
 			if $player.hp < 1
 				$player.dead
