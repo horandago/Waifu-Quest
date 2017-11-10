@@ -35,51 +35,51 @@ class Monster
 		puts "------\nAttack\nItem\nLook\nRun\n------"
 		ans = gets.chomp.downcase
 		case ans
-		when "attack", "a"
-			self.hurt($player.attack)
-			if self.hp < 1
-				anim("You defeated the #{self.name.capitalize}!")
-				$player.exp(exp)
-				self.drop
-				break
-      end
-		self.action 	
-		when "item", "i"
-			if $inventory.items.empty?
-				puts "You have no items"
-				return self.fight
-			else
-				$inventory.list_items
-				puts "exit"
-  	  	anim("Use an item?")
-    		ans = gets.chomp.downcase
-    		$used = false
-				$inventory.use_item_battle(ans)
-				if $used == true
-					self.action
+			when "attack", "a"
+				self.hurt($player.attack)
+				if self.hp < 1
+					anim("You defeated the #{self.name.capitalize}!")
+					$player.exp(exp)
+					self.drop
+					break
+   	   		end
+				self.action 	
+			when "item", "i"
+				if $inventory.items.empty?
+					puts "You have no items"
+					return self.fight
+				else
+					$inventory.list_items
+					puts "exit"
+  		  			anim("Use an item?")
+   	 			ans = gets.chomp.downcase
+   	 			$used = false
+					$inventory.use_item_battle(ans)
+					if $used == true
+						self.action
+					end
+					return self.fight
 				end
-				return self.fight
+			when "look", "l"
+				self.description
+			when "run", "r"
+				anim("You try to escape!".colorize(:blue))
+				self.action
+				if $player.hp > 0
+					anim("......You manage to escape!".colorize(:green))
+					$game.continue
+					break
+				else
+					$player.dead
+					break
+				end	
 			end
-		when "look", "l"
-			self.description
-		when "run", "r"
-			anim("You try to escape!".colorize(:blue))
-			self.action
-			if $player.hp > 0
-				anim("......You manage to escape!".colorize(:green))
-				$game.continue
-				break
-			else
+			if $player.hp < 1
 				$player.dead
 				break
-			end	
-		end
-		if $player.hp < 1
-			$player.dead
-			break
-		end
-	end	
-end
+			end
+		end	
+	end
 
 end
 

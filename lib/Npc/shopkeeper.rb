@@ -34,15 +34,15 @@ class Shopkeeper < Npc
 			end
 	
 			case ans
-			when 'Exit'
-				return speak
-			when 'Potion' 	
-				$inventory.buy(Potion.new, self)
-			when 'Bronze sword'
-			  $inventory.buy(Bronze_sword.new, self)
-      when 'Chainmail'
-      	$inventory.buy(Chainmail.new, self)
-			end
+				when 'Exit'
+					return speak
+				when 'Potion' 	
+					$inventory.buy(Potion.new, self)
+				when 'Bronze sword'
+					$inventory.buy(Bronze_sword.new, self)
+      			when 'Chainmail'
+      				$inventory.buy(Chainmail.new, self)
+				end
 		elsif ans == "sell"
 			$inventory.list_all_items_price
 			anim("Which item will you sell?:")

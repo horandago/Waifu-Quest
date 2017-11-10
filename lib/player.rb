@@ -76,7 +76,6 @@ class Player
 	def equip(item)
 		equip = Hash.new
 		$inventory.equipment.each {|obj| equip[obj] = obj.to_s}
-		
 		equip.each { |k,v| if k.is_weapon
 			if item == k.to_s.downcase
 				$inventory.equipment.push(@weapon) if @weapon != nil	
@@ -93,8 +92,8 @@ class Player
       				@armour = k
 					anim("You put on the #{@armour.to_s}".colorize(:green))
 					break
-      			end
-      		end
+   			end
+     	end
 		}
 	end
 

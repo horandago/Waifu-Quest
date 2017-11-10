@@ -36,16 +36,16 @@ class Village_shopkeeper < Npc
 			end
 	
 			case ans
-			when 'Exit'
-				return speak
-			when 'Good potion' 	
-				$inventory.buy(Good_potion.new, self)
-      when 'Rope'  
-        $inventory.buy(Rope.new, self)		
-    	when 'Mallet'
-      	$inventory.buy(Mallet.new, self)
-			when 'Chainmail'
-        $inventory.buy(Chainmail.new, self)
+				when 'Exit'
+					return speak
+				when 'Good potion' 	
+					$inventory.buy(Good_potion.new, self)
+    			when 'Rope'  
+        			$inventory.buy(Rope.new, self)		
+    			when 'Mallet'
+      				$inventory.buy(Mallet.new, self)
+				when 'Chainmail'
+       				$inventory.buy(Chainmail.new, self)
 			end
 		elsif ans == "sell"
 			$inventory.list_all_items_price

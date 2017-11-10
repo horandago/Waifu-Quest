@@ -1,4 +1,5 @@
 class Shirt < Armour
+	
 	def initialize
 		super
 		@name = "Shirt"

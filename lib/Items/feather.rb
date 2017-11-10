@@ -6,6 +6,5 @@ class Feather < Items
 		@is_usable = false
 		@is_junk = true
 	end
-
 end
 

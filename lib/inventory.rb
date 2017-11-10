@@ -61,11 +61,11 @@ def list_items
 	if @items.empty?
 		puts "Your inventory is empty!"
 	else
-	puts "\n"
-	counts = Hash.new(0)
-	@items.each { |name| counts[name.to_s] += 1 }
-	counts.each { |k,v| print "#{k.to_s} (#{v}) "}
-	print "\n"
+		puts "\n"
+		counts = Hash.new(0)
+		@items.each { |name| counts[name.to_s] += 1 }
+		counts.each { |k,v| print "#{k.to_s} (#{v}) "}
+		print "\n"
 	end
 end
 
@@ -90,11 +90,11 @@ def list_all_items_price
 	counts.each { |k,v| print "#{k.to_s} (#{v}gp) \n"}
 end
 
-def sell(item) 
-	selling = Hash.new
-	@combine = @items + @equipment
-	@combine.each {|obj| selling[obj] = obj.to_s}
-	selling.each { |k,v| 
+	def sell(item) 
+		selling = Hash.new
+		@combine = @items + @equipment
+		@combine.each {|obj| selling[obj] = obj.to_s}
+		selling.each { |k,v| 
 			if item == v.downcase && k.is_junk
 				anim("Do you want to sell all of your #{item}(s)?(y/n)")
 				ans = gets.chomp.downcase
@@ -105,7 +105,7 @@ def sell(item)
 						selling.each {|k,v|
 							if item == v.downcase
 								@make += k.price / 2
-                @make = @make.to_i
+ 	              @make = @make.to_i
 								@many += 1
 								$inventory.items.delete(k)
 							end }
@@ -113,23 +113,23 @@ def sell(item)
 							$player.gp += @make
 					when "n", "no"
 						puts "Fair enough..."
-					end
+				end
+				break
+			end
+			if item == v.downcase
+				$player.gp += k.value
+				anim("You sold the #{v} for #{k.value}gp!")	
+				if k.is_item
+					$inventory.items.delete(k)
 					break
 				end
-		if item == v.downcase
-			$player.gp += k.value
-			anim("You sold the #{v} for #{k.value}gp!")	
-			if k.is_item
-				$inventory.items.delete(k)
-				break
+				if k.is_equipment
+					$inventory.equipment.delete(k)
+					break
+				end
 			end
-			if k.is_equipment
-				$inventory.equipment.delete(k)
-				break
-			end
-		end
-	}
-end
+		}
+	end
 
   def buy(item, seller)
     if $player.gp >= item.price

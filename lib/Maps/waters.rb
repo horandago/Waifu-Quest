@@ -20,11 +20,7 @@ class Waters < Maps
 					"Equip",
 					"Move"
 					]
-			@move_map = [$lake
-					]
-#		if $map.level > 1
-#			@move_map.push()
-#		end
+		@move_map = [$lake]
 		anim("What do you want to do?")
 		puts "-----WATERS-----"
 		puts @choices
@@ -43,9 +39,6 @@ class Waters < Maps
 			self.inventory
 		when "Fight" then
 			if $hydra.alive?
-#				anim("Bandit Queen: \"Stop right there! Pay a fine or be gone!\"")
-#				anim("Bandit Queen: \"500gp if you don't mind!!\"")
-#				$game.continue
 				anim("You encounter the Hydra!")
 				$hydra.hp = 35
 				$hydra.fight

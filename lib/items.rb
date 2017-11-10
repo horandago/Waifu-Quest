@@ -9,8 +9,8 @@ class Items
 		@is_equipment = false
 		@is_sellable = true
 		@is_junk = false
-    @is_usable_battle = false
-    @is_usable_multiple = false
+    	@is_usable_battle = false
+    	@is_usable_multiple = false
 	end
 
 	def use
