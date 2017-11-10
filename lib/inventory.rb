@@ -86,7 +86,7 @@ end
 def list_all_items_price
 	counts = Hash.new
 	@combine = @items + @equipment
-	@combine.each { |name| counts[name.to_s] = name.value if name.is_sellable}
+	@combine.each { |name| counts[name.to_s] = name.price if name.is_sellable}
 	counts.each { |k,v| print "#{k.to_s} (#{v}gp) \n"}
 end
 
@@ -117,8 +117,8 @@ end
 				break
 			end
 			if item == v.downcase
-				$player.gp += k.value
-				anim("You sold the #{v} for #{k.value}gp!")	
+				$player.gp += k.price
+				anim("You sold the #{v} for #{k.price}gp!")	
 				if k.is_item
 					$inventory.items.delete(k)
 					break
