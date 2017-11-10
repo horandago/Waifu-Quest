@@ -37,13 +37,6 @@ class Monster
 			case ans
 				when "attack", "a"
 					self.hurt($player.attack)
-					if self.hp < 1
-						anim("You defeated the #{self.name.capitalize}!")
-						$player.exp(exp)
-						self.drop
-						break
-   		   			end
-					self.action 	
 				when "item", "i"
 					if $inventory.items.empty?
 						puts "You have no items"
@@ -62,6 +55,7 @@ class Monster
 					end
 				when "look", "l"
 					self.description
+					return self.fight
 				when "run", "r"
 					anim("You try to escape!".colorize(:blue))
 					self.action
@@ -77,14 +71,31 @@ class Monster
 					puts "Which skill do you want to use?\n----------"
 					$player.skills.each {|k| puts k.to_s }
 					puts "----------"
-					self.hurt($fireball.cast)
-			end
+					ans = gets.chomp.downcase
+					if ans == "cancel"
+						return self.fight
+					end
+					$player.skills.each {|k| if ans == k.to_s.downcase
+						self.hurt($fireball.cast)
+						else
+							puts "Please type that correctly"
+							return self.fight
+						end
+					}
+			if self.hp < 1
+				anim("You defeated the #{self.name.capitalize}!")
+				$player.exp(exp)
+				self.drop
+				break
+   		end
 			if $player.hp < 1
 				$player.dead
 				break
 			end
+			self.action 	
 		end	
 	end
+end
 end
 
 

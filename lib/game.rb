@@ -9,6 +9,7 @@ Dir["Items/*.rb"].each { |file| require_relative file }
 Dir["Weapons/*.rb"].each { |file| require_relative file }
 Dir["Armour/*.rb"].each { |file| require_relative file }
 Dir["Maps/*.rb"].each { |file| require_relative file }
+Dir["Skills/*.rb"].each { |file| require_relative file }
 
 system("clear")
 puts "

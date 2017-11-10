@@ -9,4 +9,7 @@ class Fireball < Skills
     def cast
         rand(@dmg_lo...@dmg_hi)
     end
+
 end
+
+$fireball = Fireball.new

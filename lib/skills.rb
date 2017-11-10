@@ -4,10 +4,10 @@ class Skills
     end
 
     def to_s
-		"#{@name}"
+      "#{@name}"
     end
     
     def cast
-        puts "Nothing happens"
+      puts "Nothing happens"
     end
 end
