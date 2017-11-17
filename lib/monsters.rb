@@ -82,6 +82,7 @@ class Monster
 							return self.fight
 						end
 					}
+      end
 			if self.hp < 1
 				anim("You defeated the #{self.name.capitalize}!")
 				$player.exp(exp)
@@ -96,6 +97,6 @@ class Monster
 		end	
 	end
 end
-end
+
 
 

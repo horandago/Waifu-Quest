@@ -19,7 +19,7 @@ class Player
 		@gp = 0
 		@weapon = Bare_fists.new
 		@armour = Shirt.new
-		@skills = [$fireball]
+		@skills = []
 		@base_attack = 0
 		@level = 1
 		@exp_level_up = 50
