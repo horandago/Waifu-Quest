@@ -28,14 +28,22 @@ class Monster
 
 	def fight
 		while $player.alive?
+			@fight_list = ["attack","skill","item","look","run", "a", "s", "i", "l", "r"]
 			puts "-------------------------"
 			puts "#{$player.name}: #{$player.hp.to_i}HP | #{self.name}: #{self.hp}HP"
 			puts "-------------------------"
 			anim("What do you want to do?")
-			puts "------\nAttack\nSkill\nItem\nLook\nRun\n------"
+			puts "----------"
+			puts "Attack\nSkill\nItem\nLook\nRun"
+			puts "----------"
 			ans = gets.chomp.downcase
+      until @fight_list.include? ans
+				puts "Please type that correctly:"
+				ans = gets.chomp.downcase
+			end
 			case ans
 				when "attack", "a"
+					anim("You attack the #{self.name}!")
 					self.hurt($player.attack)
 				when "item", "i"
 					if $inventory.items.empty?
