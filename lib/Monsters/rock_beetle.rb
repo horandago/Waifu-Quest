@@ -5,7 +5,7 @@ class Rock_beetle < Monster
     @name = "Rock Beetle"
     @attack_lo = 0
 		@attack_hi = 5
-		@exp = 10
+		@exp = 12
 		@items = [Rope.new, Rock.new, "nothing"]
 		@gold_lo = 4
 		@gold_hi = 11

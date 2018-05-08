@@ -3,7 +3,7 @@ require_relative '../npc.rb'
 class Village_shopkeeper < Npc
 			POTION_COST = 25
 			MALLET_COST = 150
-			MAIL_COST = 50
+			MAIL_COST = 45
 			ROPE_COST = 10
       @deny = "Shopkeeper: Yerp, if yer canny afford that, you got not business here I'm afraid"
 	def initialize

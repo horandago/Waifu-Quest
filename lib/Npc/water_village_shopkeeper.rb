@@ -2,8 +2,8 @@ require_relative '../npc.rb'
 
 class Water_shopkeeper < Npc
 			POTION_COST = 25
-			MALLET_COST = 200
-			MAIL_COST = 50
+			MALLET_COST = 150
+			MAIL_COST = 45
 	def initialize
 			@@shop_list = ['Good potion', 'Mallet', 'Chainmail', 'Exit']
 	end

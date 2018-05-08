@@ -5,7 +5,7 @@ class Bronze_sword < Weapons
 		@name = "Bronze sword"
 		@dmg_lo = 1
 		@dmg_hi = 4
-		@price = 35
+		@price = 12
 	end
 
 	def description

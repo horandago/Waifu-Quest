@@ -4,7 +4,7 @@ class Chainmail < Armour
 		super
 		@name = "Chainmail"
 		@defence = 1
-		@price = 50
+		@price = 45
 	end
 end
 

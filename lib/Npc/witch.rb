@@ -39,6 +39,9 @@ class Witch < Npc
 					anim("You craft the Dark Blade!")
 					$inventory.add_item(Dark_blade.new)
 				end
+      when "exit"
+        anim("Suit yourself...you'll be mine soon enough!")
+        break
 	  	end
   	end
 	end

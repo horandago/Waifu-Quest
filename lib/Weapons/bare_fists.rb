@@ -5,6 +5,7 @@ class Bare_fists < Weapons
 		@dmg_hi = 2
 		@name = "Bare fists"
 		@price = 10 
+		@is_sellable = false
 	end
 	
 	def dmg

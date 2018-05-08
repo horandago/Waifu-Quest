@@ -1,8 +1,6 @@
 class Secret_map < Items
-	attr_accessor :level
 	def initialize
 		super
-		@is_usable = false
 		@name = "Secret map"
 		@price = nil
 		@is_sellable = false
@@ -10,7 +8,7 @@ class Secret_map < Items
 	end
 
 	def use
-"
+puts "
              -----------
              |         |
              |   HUT   |
@@ -22,6 +20,7 @@ class Secret_map < Items
            |            |
            |   FOREST   |
            |____________|
+
 "
 
 	end
