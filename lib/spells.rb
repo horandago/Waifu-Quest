@@ -1,6 +1,7 @@
-class Skills
-    attr_reader :name
+class Spells
+    attr_reader :name, :combat_spell
     def initialize
+      @combat_spell = true
     end
 
     def to_s

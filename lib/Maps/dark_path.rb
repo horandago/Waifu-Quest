@@ -3,12 +3,6 @@ class Dark_path < Maps
 	def initialize
 		super
 		@name = "Dark_path"
-		@choices = ["Look",
-					"Fight",
-					"Item",
-					"Equip",
-					"Move"
-					]
 		
 	end
 
@@ -29,24 +23,9 @@ class Dark_path < Maps
 			puts "Please type that correctly"
 			ans = gets.chomp.downcase.capitalize!
 		end
-		
-		case ans
-		when "Item" then 
-			$inventory.list_items
-			self.inventory
-		when "Fight" then
-			@monsters_list = [Fire_slime.new]	
-			@enemy = @monsters_list.sample
-			anim("You encounter the #{@enemy.name}!")
-			@enemy.fight
-		when "Look" then
-			self.look
-		when "Equip" then
-			self.equip
-		when "Move" then
-			self.move
-		end
+		@monsters_list = [Fire_slime.new]	
+		@enemy = @monsters_list.sample
+    wild_action(ans, @enemy)
 	end
-
 end
 $dark_path = Dark_path.new

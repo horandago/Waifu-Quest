@@ -3,6 +3,7 @@ class Hut < Maps
 	def initialize
 		super
 		@name = "Hut"
+    @npc = $witch
 	end
 
 	def look
@@ -10,14 +11,7 @@ class Hut < Maps
 	end
 
 	def map
-		@choices = ["Look",
-          "Talk",
-					"Fight",
-					"Item",
-					"Equip",
-					"Move"
-					]
-			@move_map = [$forest]
+	  @move_map = [$forest]
 		anim("What do you want to do?")
 		puts "-----HUT-----"
 		puts @choices
@@ -29,20 +23,7 @@ class Hut < Maps
 			puts "Please type that correctly"
 			ans = gets.chomp.downcase.capitalize!
 		end
-		
-		case ans
-		when "Item" then 
-			$inventory.list_items
-			self.inventory
-		when "Talk" then
-      $witch.speak
-    when "Look" then
-			self.look
-		when "Equip" then
-			self.equip
-		when "Move" then
-			self.move
-		end
+	  self.home_action(ans, npc)	
 	end
 end
 

@@ -11,12 +11,6 @@ class Mountains < Maps
 	end
 
 	def map
-		@choices = ["Look",
-					"Fight",
-					"Item",
-					"Equip",
-					"Move"
-					]
 		@move_map = [$fields]
 		if $map.level > 1
       @move_map.push($path)
@@ -32,25 +26,10 @@ class Mountains < Maps
 			puts "Please type that correctly"
 			ans = gets.chomp.downcase.capitalize!
 		end
-		
-		case ans
-		when "Item" then 
-			$inventory.list_items
-			self.inventory
-		when "Fight" then
-			@monsters_list = [Rock_beetle.new]	
-			@enemy = @monsters_list.sample
-			anim("You encounter the #{@enemy.name}!")
-			@enemy.fight
-		when "Look" then
-			self.look
-		when "Equip" then
-			self.equip
-		when "Move" then
-			self.move
-		end
+		@monsters_list = [Rock_beetle.new]	
+		@enemy = @monsters_list.sample
+    wild_action(ans, @enemy)		
 	end
-
 end
 
 $mountains = Mountains.new

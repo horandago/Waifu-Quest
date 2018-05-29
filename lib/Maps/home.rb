@@ -3,7 +3,7 @@ class Home < Maps
 	def initialize
 		super
 		@name = "Home"
-		
+    @npc = $shopkeeper		
 	end
 
 	def look
@@ -32,23 +32,8 @@ class Home < Maps
 			puts "Please type that correctly"
 			ans = gets.chomp.downcase.capitalize!
 		end
-		case ans
-			when "Item" then 
-				$inventory.list_items
-				self.inventory
-			when "Shop" then
-				$shopkeeper.speak
-			when "Look" then
-				self.look
-			when "Equip" then
-				self.equip
-			when "Move" then
-				self.move
-			when "Rest" then
-				self.rest
-      when "#{$player.name}" then
-				$player.character
-		end
+    self.home_action(ans, @npc)
 	end
 end
+
 $home = Home.new

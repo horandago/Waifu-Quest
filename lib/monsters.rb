@@ -28,13 +28,13 @@ class Monster
 
 	def fight
 		while $player.alive?
-			@fight_list = ["attack","item","look","run", "a", "s", "i", "l", "r"]
+			@fight_list = ["attack","spell","item","look","run", "a", "s", "i", "l", "r"]
 			puts "-------------------------"
 			puts "#{$player.name}: #{$player.hp.to_i}HP | #{self.name}: #{self.hp}HP"
 			puts "-------------------------"
 			anim("What do you want to do?")
 			puts "----------"
-			puts "Attack\nItem\nLook\nRun"
+			puts "Attack\nSpell\nItem\nLook\nRun"
 			puts "----------"
 			ans = gets.chomp.downcase
       until @fight_list.include? ans
@@ -75,21 +75,27 @@ class Monster
 						$player.dead
 						break
 					end
-#				when "skill", "s"
-#					puts "Which skill do you want to use?\n----------"
-#					$player.skills.each {|k| puts k.to_s }
-#					puts "----------"
-#					ans = gets.chomp.downcase
-#					if ans == "cancel"
-#						return self.fight
-#					end
-#					$player.skills.each {|k| if ans == k.to_s.downcase
-#						self.hurt($fireball.cast)
-#						else
-#							puts "Please type that correctly"
-#							return self.fight
-#						end
-#					}
+				when "spell", "s"
+					puts "Which spell do you want to cast?\n----------"
+					$player.spells.each {|k| puts k.to_s if k.combat_spell}
+					puts "Cancel\n----------"
+					ans = gets.chomp.downcase
+					if ans == "cancel"
+						return self.fight
+					end
+					$player.spells.each {|k|
+          if ans == k.to_s.downcase
+				    if k.combat_spell == true
+              self.hurt(k.cast) 
+              break
+            else 
+              puts "You cannot cast that here" 
+            end
+				  else
+					  puts "Please type that correctly"
+						return self.fight
+				  end
+					}
       end
 			if self.hp < 1
 				anim("You defeated the #{self.name.capitalize}!")

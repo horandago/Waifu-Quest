@@ -3,12 +3,6 @@ class Gate < Maps
 	def initialize
 		super
 		@name = "Gate"
-		@choices = ["Look",
-					"Fight",
-					"Item",
-					"Equip",
-					"Move"
-					]
 	end
 
 	def look

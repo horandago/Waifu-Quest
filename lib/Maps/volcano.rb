@@ -14,12 +14,6 @@ class Volcano < Maps
 	end
 
 	def map
-		@choices = ["Look",
-					"Fight",
-					"Item",
-					"Equip",
-					"Move"
-					]
 			@move_map = [$path
 					]
 		anim("What do you want to do?")

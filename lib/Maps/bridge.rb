@@ -14,12 +14,6 @@ class Bridge < Maps
 	end
 
 	def map
-		@choices = ["Look",
-					"Fight",
-					"Item",
-					"Equip",
-					"Move"
-					]
 			@move_map = [$fields
 					]
 		if $map.level > 1

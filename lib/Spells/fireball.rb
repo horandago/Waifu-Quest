@@ -1,4 +1,4 @@
-class Fireball < Skills
+class Fireball < Spells
     def initialize
         super
         @name = "Fireball"

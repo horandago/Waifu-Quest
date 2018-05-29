@@ -1,6 +1,6 @@
 class Player
 	attr_reader :name, :age, :race, :gender, :height, :name, :surname, :fullname
-	attr_accessor :hp, :gp, :exp, :weapon, :max_hp, :base_attack, :level, :hair_colour, :hair_style, :hair_length, :skills 
+	attr_accessor :hp, :gp, :exp, :weapon, :max_hp, :base_attack, :level, :hair_colour, :hair_style, :hair_length, :spells 
 		
 	def initialize(name, surname, fullname, age, gender, hair_colour, hair_length, hair_style, race, height)
 		@name = name
@@ -16,11 +16,12 @@ class Player
     @max_hp = 10
 		@hp = max_hp
 		@exp = 0
-		@gp = 0
+		@gp = 100
 		@weapon = Bare_fists.new
 		@armour = Shirt.new
-		@skills = []
-		@base_attack = 0
+    @helmet = Beret.new
+		@spells = [$fireball, $teleport]
+		@base_attack = 100
 		@level = 1
 		@exp_level_up = 50
     @curve = 75
@@ -94,6 +95,13 @@ class Player
 					anim("You put on the #{@armour.to_s}".colorize(:green))
 					break
    			end
+        if item == k.to_s.downcase
+              $inventory.equipment.push(@helmet) if @helmet != nil
+              $inventory.equipment.delete(k)
+              @helmet = k
+          anim("You put on the #{@helmet.to_s}".colorize(:green))
+          break
+        end
      	end
 		}
 	end
@@ -107,7 +115,7 @@ class Player
 	end
 
   def character
-    anim("------#{self.fullname}------\n Age: #{self.age}\n Gender: #{self.gender}\n Race: #{self.race}\n Height: #{self.height}\n Hair: #{hair_length} and #{hair_colour} in a #{hair_style} style\n Weapon: #{@weapon.to_s}\n Armour: #{@armour.to_s}\n-------------------")
+    anim("------#{self.fullname}------\n Age: #{self.age}\n Gender: #{self.gender}\n Race: #{self.race}\n Height: #{self.height}\n Hair: #{hair_length} and #{hair_colour} in a #{hair_style} style\n Weapon: #{@weapon.to_s}\n Armour: #{@armour.to_s}\n Helmet: #{@helmet.to_s}\n-------------------")
   end
 
 	def dead

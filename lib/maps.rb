@@ -1,7 +1,14 @@
 class Maps
-	attr_reader :name, :move_map
+	attr_reader :name, :move_map, :choices
 
 	def initialize
+		@choices = ["Look",
+					"Fight",
+					"Item",
+					"Equip",
+          "Spell",
+					"Move"
+					]
 	end
 
 	def to_s
@@ -41,6 +48,50 @@ class Maps
 			ans = gets.chomp.downcase.capitalize!
 		end
 	end
+
+  def wild_action(ans, enemy)
+    case ans
+    when "Item" then
+      $inventory.list_items
+      self.inventory
+    when "Fight" then
+      anim("You encounter the #{enemy.name}!")
+      @enemy.fight
+    when "Look" then
+      self.look
+    when "Spell" then
+      $player.spells.each {|k|
+        puts k if k.combat_spell == false
+        spell_ans = gets.chomp.downcase
+        if spell_ans == k.to_s.downcase
+          if k.combat_spell == true     
+    when "Equip" then
+      self.equip
+    when "Move" then
+      self.move
+    end
+  end
+
+
+  def home_action(ans, npc)
+    case ans
+      when "Item" then
+        $inventory.list_items
+        self.inventory
+      when "Shop" then
+        npc.speak
+      when "Look" then
+        self.look
+      when "Equip" then
+        self.equip
+      when "Move" then
+        self.move
+      when "Rest" then
+        self.rest
+      when "#{$player.name}" then
+        $player.character
+    end
+  end
 
 	def rest
 		anim("You take a rest in the village's inn\nYou restore your hp!")

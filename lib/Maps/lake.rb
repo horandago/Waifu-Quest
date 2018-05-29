@@ -10,12 +10,6 @@ class Lake < Maps
 	end
 
 	def map
-		@choices = ["Look",
-					"Fight",
-					"Item",
-					"Equip",
-					"Move"
-					]
 		@move_map = [$plains, $water_village, $waters]
 		anim("What do you want to do?")
 		puts "-----LAKE-----"
@@ -28,24 +22,9 @@ class Lake < Maps
 			puts "Please type that correctly"
 			ans = gets.chomp.downcase.capitalize!
 		end
-		
-		case ans
-		when "Item" then 
-			$inventory.list_items
-			self.inventory
-		when "Fight" then
-			@monsters_list = [Frog_girl.new, Mermaid.new]	
-			@enemy = @monsters_list.sample
-			anim("You encounter the #{@enemy.name}!")
-			@enemy.fight
-		when "Look" then
-			self.look
-		when "Equip" then
-			self.equip
-		when "Move" then
-			move
-		end
+		@monsters_list = [Frog_girl.new, Mermaid.new]	
+		@enemy = @monsters_list.sample
+		wild_action(ans, @enemy)
 	end
-
 end
 $lake = Lake.new

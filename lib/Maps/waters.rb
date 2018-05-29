@@ -14,12 +14,6 @@ class Waters < Maps
 	end
 
 	def map
-		@choices = ["Look",
-					"Fight",
-					"Item",
-					"Equip",
-					"Move"
-					]
 		@move_map = [$lake]
 		anim("What do you want to do?")
 		puts "-----WATERS-----"

@@ -11,12 +11,6 @@ class Path < Maps
 	end
 
 	def map
-		@choices = ["Look",
-					"Fight",
-					"Item",
-					"Equip",
-					"Move"
-					]
 		@move_map = [$mountains, $volcano]
 		anim("What do you want to do?")
 		puts "-----PATH-----"
@@ -29,24 +23,9 @@ class Path < Maps
 			puts "Please type that correctly"
 			ans = gets.chomp.downcase.capitalize!
 		end
-		
-		case ans
-		when "Item" then 
-			$inventory.list_items
-			self.inventory
-		when "Fight" then
-			@monsters_list = [Fire_slime.new]	
-			@enemy = @monsters_list.sample
-			anim("You encounter the #{@enemy.name}!")
-			@enemy.fight
-		when "Look" then
-			self.look
-		when "Equip" then
-			self.equip
-		when "Move" then
-			self.move
-		end
+		@monsters_list = [Fire_slime.new]	
+		@enemy = @monsters_list.sample
+		wild_action(ans, @enemy)
 	end
-
 end
 $path = Path.new
