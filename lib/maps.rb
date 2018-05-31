@@ -60,11 +60,19 @@ class Maps
     when "Look" then
       self.look
     when "Spell" then
+      $inventory.list_spells 
+      spell_ans = gets.chomp.downcase
       $player.spells.each {|k|
-        puts k if k.combat_spell == false
-        spell_ans = gets.chomp.downcase
         if spell_ans == k.to_s.downcase
           if k.combat_spell == true     
+            k.cast
+          else
+            anim("You cannot cast that right now")
+          end
+        else
+          anim("You cast the spell incorrectly...")
+        end
+      }  
     when "Equip" then
       self.equip
     when "Move" then

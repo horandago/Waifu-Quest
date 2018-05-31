@@ -16,12 +16,12 @@ class Player
     @max_hp = 10
 		@hp = max_hp
 		@exp = 0
-		@gp = 100
+		@gp = 0
 		@weapon = Bare_fists.new
 		@armour = Shirt.new
     @helmet = Beret.new
 		@spells = [$fireball, $teleport]
-		@base_attack = 100
+		@base_attack = 1
 		@level = 1
 		@exp_level_up = 50
     @curve = 75

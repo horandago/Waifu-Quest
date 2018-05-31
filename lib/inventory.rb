@@ -83,6 +83,18 @@ def list_equipment
   end
 end
 
+def list_spells
+  if $player.spells.empty?
+      puts "You have not learnt any spells yet!"
+      return $game.current_map.map
+    else
+      anim("Which spell do you want to cast?")
+      puts "----------"
+      $player.spells.each { |name| puts "#{name.to_s}" }
+      puts "----------"
+  end
+end
+
 def list_all_items_price
   counts = Hash.new
   @combine = @items + @equipment
