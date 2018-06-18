@@ -14,7 +14,7 @@ class Path < Maps
 		@move_map = [$mountains, $volcano]
 		anim("What do you want to do?")
 		puts "-----PATH-----"
-		puts @choices
+		print_choices
 		puts "--------------"
 		$player.info
 		print "\n: "

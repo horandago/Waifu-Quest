@@ -8,7 +8,7 @@ class Village_shopkeeper < Npc
       COWL_COST = 30
       @deny = "Shopkeeper: Yerp, if yer canny afford that, you got not business here I'm afraid"
   def initialize
-  		@@shop_list = ['Good potion', 'Mallet', 'Rope', 'Chainmail', 'Exit']
+  		@@shop_list = ['Good potion', 'Mallet', 'Rope', 'Chainmail', 'Cowl', 'Exit']
   end
 
   def speak

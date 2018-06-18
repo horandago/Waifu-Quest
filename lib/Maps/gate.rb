@@ -15,13 +15,13 @@ class Gate < Maps
 
 	def map
 			@move_map = [$forest
-					]
+				]
 		if $map.level > 2
 			@move_map.push($dark_path)
 		end
 		anim("What do you want to do?")
 		puts "-----GATE-----"
-		puts @choices
+		print_choices
 		puts "--------------"
 		$player.info
 		print "\n: "

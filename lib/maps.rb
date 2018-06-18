@@ -1,14 +1,30 @@
 class Maps
-	attr_reader :name, :move_map, :choices
+	attr_reader :name, :move_map, :choices, :map_choices
 
 	def initialize
-		@choices = ["Look",
-					"Fight",
-					"Item",
-					"Equip",
-          "Spell",
-					"Move"
-					]
+		@choices = [
+			"Look",
+			"Fight",
+			"Item",
+			"Equip",
+			"Spell",
+			"Move",
+	    "Info",
+			"Help"
+			]
+
+	  @map_choices = [
+			"Look",
+	    "Shop",
+	    "Item",
+	    "Equip",
+	    "Spell",
+			"Move",
+	    "Rest",
+	    "Info",
+			"Help"
+	        ]
+
 	end
 
 	def to_s
@@ -49,61 +65,88 @@ class Maps
 		end
 	end
 
-  def wild_action(ans, enemy)
-    case ans
-    when "Item" then
-      $inventory.list_items
-      self.inventory
-    when "Fight" then
-      anim("You encounter the #{enemy.name}!")
-      @enemy.fight
-    when "Look" then
-      self.look
-    when "Spell" then
-      $inventory.list_spells 
-      spell_ans = gets.chomp.downcase
-      $player.spells.each {|k|
-        if spell_ans == k.to_s.downcase
-          if k.combat_spell == true     
-            k.cast
-          else
-            anim("You cannot cast that right now")
-          end
-        else
-          anim("You cast the spell incorrectly...")
-        end
-      }  
-    when "Equip" then
-      self.equip
-    when "Move" then
-      self.move
-    end
-  end
+	def print_map_choices
+		@map_choices.each {|k| puts "> #{k}".colorize(:green) }
+	end
 
+	def print_choices
+		@choices.each {|k| puts "> #{k}".colorize(:green) }
+	end
 
-  def home_action(ans, npc)
-    case ans
-      when "Item" then
-        $inventory.list_items
-        self.inventory
-      when "Shop" then
-        npc.speak
-      when "Look" then
-        self.look
-      when "Equip" then
-        self.equip
-      when "Move" then
-        self.move
-      when "Rest" then
-        self.rest
-      when "#{$player.name}" then
-        $player.character
-    end
-  end
+	def wild_action(ans, enemy)
+		case ans
+		when "Item" then
+			$inventory.list_items
+			self.inventory
+		when "Fight" then
+			anim("You encounter the #{enemy.name}!")
+			@enemy.fight
+		when "Look" then
+			self.look
+		when "Spell" then
+			$inventory.list_spells 
+			spell_ans = gets.chomp.downcase
+			$inventory.spells.each {|k|
+				if spell_ans == k.to_s.downcase
+					if k.combat_spell == false		 
+						k.cast
+					else
+						anim("You cannot cast that right now")
+					end
+				else
+					anim("Please type that correctly...")
+	        $game.continue
+	        break
+				end
+			}	
+		when "Equip" then
+			self.equip
+		when "Move" then
+			self.move
+	  when "Info" then
+	    puts $player.info
+		when "Help" then
+			$game.help
+		end
+	end
+
+	def home_action(ans, npc)
+		case ans
+			when "Item" then
+				$inventory.list_items
+				self.inventory
+			when "Shop" then
+				npc.speak
+			when "Look" then
+				self.look
+			when "Spell" then
+				$inventory.list_spells
+				spell_ans = gets.chomp.downcase
+				$nventory.spells.each {|k|
+					if spell_ans == k.to_s.downcase
+						if k.combat_spell == false
+							k.cast
+						else
+							anim("You cannot cast that right now")
+						end
+					end
+					}
+			when "Equip" then
+				self.equip
+			when "Move" then
+				self.move
+			when "Rest" then
+				self.rest
+			when "Info" then
+				puts $player.character
+	    when "Help" then
+	      $game.help
+		end
+	end
 
 	def rest
 		anim("You take a rest in the village's inn\nYou restore your hp!")
 		$player.hp = $player.max_hp
-    	$game.continue
+			$game.continue
 	end
 end

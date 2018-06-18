@@ -2,7 +2,7 @@ class Dark_path < Maps
 
 	def initialize
 		super
-		@name = "Dark_path"
+		@name = "Dark path"
 		
 	end
 
@@ -14,7 +14,7 @@ class Dark_path < Maps
 		@move_map = [$gate]
 		anim("What do you want to do?")
 		puts "-----DARK PATH-----"
-		puts @choices
+		print_choices
 		puts "-------------------"
 		$player.info
 		print "\n: "

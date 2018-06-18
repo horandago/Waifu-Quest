@@ -17,7 +17,7 @@ class Mountains < Maps
     end
 		anim("What do you want to do?")
 		puts "-----MOUNTAINS-----"
-		puts @choices
+		print_choices
 		puts "-------------------"
 		$player.info
 		print "\n: "

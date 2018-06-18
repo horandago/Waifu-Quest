@@ -44,7 +44,7 @@ class Game
 	attr_accessor :current_map
 	def initialize
 		$inventory = Inventory.new
-		@current_map = $home	
+		@current_map = $forest	
 	end
 
 	def play_game
@@ -58,6 +58,11 @@ class Game
 	  STDIN.getch
 	  print "\r"
 	  puts "------------------------------"
+	end
+
+	def help
+    puts "\n----------GAME GUIDE--------\nThank you for playing Waifu Quest!\n\n-----Game objective-----\nThe object of the game is to level up and defeat the final boss. Pretty simple, right? As you progress, you will get better weapons, armour and items. The map is required to progress through the game as it will open up new paths.\n\n-----Controls-----\nAs this is a text based adventure, you need to type in each command. All options will be presented on the screen throughout the game so there is no need to type in hidden information. You can view information about your character by typing \"info\" when not in combat.\n\n-----Thank You-----\nAgain, thanks for playing. If you notice any bugs or have any suggestions, please contact me via my Github page: https://github.com/horandago\n\n"
+	$game.continue
 	end
 
   def character_creation
@@ -186,7 +191,7 @@ class Game
 
     $player.character
 
-    anim("Welcome, #{$player.name}! Your adventure begins!!".colorize(:green))
+    anim("Welcome, #{$player.name}!\nYou can type the \"help\" command at any time for a simple guide of the game.\n Now then, your adventure begins!!".colorize(:green))
   end
 
 end

@@ -17,7 +17,7 @@ class Waters < Maps
 		@move_map = [$lake]
 		anim("What do you want to do?")
 		puts "-----WATERS-----"
-		puts @choices
+		print_choices
 		puts "----------------"
 		$player.info
 		print "\n: "

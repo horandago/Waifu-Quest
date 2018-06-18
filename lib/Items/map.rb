@@ -6,7 +6,7 @@ class Map < Items
 		@name = "Map"
 		@price = nil
 		@is_sellable = false
-		@level = 3
+		@level = 1
     @is_usable_multiple = true
 	end
 

@@ -43,7 +43,7 @@ class Water_shopkeeper < Npc
 						when 'Good potion' 	
 	        				$inventory.buy(Good_potion.new, self)
 						when 'Mallet'
-        					$inventory.buy(Chainmail.new, self)
+        					$inventory.buy(Mallet.new, self)
 					end
 				elsif ans == "sell"
 					$inventory.list_all_items_price

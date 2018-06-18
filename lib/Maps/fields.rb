@@ -13,7 +13,7 @@ class Fields < Maps
 		@move_map = [$home, $cave, $mountains, $bridge]
 		anim("What do you want to do?")
 		puts "-----FIELDS-----"
-		puts self.choices
+		print_choices
 		puts "----------------"
 		$player.info
 		print "\n: "

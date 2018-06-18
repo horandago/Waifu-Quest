@@ -16,7 +16,7 @@ class Forest < Maps
     end
   	anim("What do you want to do?")
   	puts "-----FOREST-----"
-  	puts @choices
+		print_choices
   	puts "----------------"
   	$player.info
   	print "\n: "

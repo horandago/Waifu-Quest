@@ -15,7 +15,7 @@ class Cave < Maps
 					]
 		anim("What do you want to do?")
 		puts "-----CAVE-----"
-		puts @choices
+		print_choices
 		puts "--------------"
 		$player.info
 		print "\n: "

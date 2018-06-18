@@ -13,7 +13,7 @@ class Plains < Maps
 		@move_map = [$bridge, $village, $lake, $forest]
 		anim("What do you want to do?")
 		puts "-----PLAINS-----"
-		puts @choices
+		print_choices
 		puts "----------------"
 		$player.info
 		print "\n: "

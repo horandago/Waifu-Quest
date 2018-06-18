@@ -14,16 +14,16 @@ class Hut < Maps
 	  @move_map = [$forest]
 		anim("What do you want to do?")
 		puts "-----HUT-----"
-		puts @choices
+		print_map_choices
 		puts "-------------"
 		$player.info
 		print "\n: "
 		ans = gets.chomp.downcase.capitalize!
-		until @choices.include? ans
+		until @map_choices.include? ans
 			puts "Please type that correctly"
 			ans = gets.chomp.downcase.capitalize!
 		end
-	  self.home_action(ans, npc)	
+	  self.home_action(ans, @npc)	
 	end
 end
 

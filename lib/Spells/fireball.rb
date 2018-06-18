@@ -1,9 +1,10 @@
 class Fireball < Spells
     def initialize
-        super
+	super
         @name = "Fireball"
         @dmg_lo = 5
         @dmg_hi = 10
+	@combat_spell = true
     end
 
     def cast

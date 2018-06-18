@@ -21,7 +21,7 @@ class Bridge < Maps
 		end
 		anim("What do you want to do?")
 		puts "-----BRIDGE-----"
-		puts @choices
+		print_choices
 		puts "----------------"
 		$player.info
 		print "\n: "

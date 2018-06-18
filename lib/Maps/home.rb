@@ -11,24 +11,16 @@ class Home < Maps
 	end
 
 	def map
-		@choices = ["Look",
-					"Shop",
-					"Item",
-					"Equip",
-					"Move",
-					"Rest",
-          "#{$player.name}"
-					]
     $last_village = $home
   	@move_map = [$fields]
 		anim("What do you want to do?")
-		puts "-----HOME-----"
-		puts @choices
+		puts "-----Home-----"
+		print_map_choices
 		puts "--------------"
 		$player.info
 		print "\n: "
 		ans = gets.chomp.downcase.capitalize!
-		until @choices.include? ans
+		until @map_choices.include? ans
 			puts "Please type that correctly"
 			ans = gets.chomp.downcase.capitalize!
 		end

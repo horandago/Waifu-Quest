@@ -16,7 +16,7 @@ class Witch < Npc
       ans = gets.chomp.downcase
 			case ans
       when "dark blade"
-        anim("Okay, please bring me 10 of each crafting materials in this land..")
+        anim("Okay, please bring me 5 of each crafting materials in this land..")
         $inventory.items.each {|k|
           if k.to_s == "Feather"
 						@feather_count += 1
@@ -32,7 +32,7 @@ class Witch < Npc
 					end
 					 }
         anim("Okay.. you have brought me:\n#{@feather_count} feathers\n#{@rock_count} rocks\n#{@web_count} webs,\n#{@goo_count} globs of goo")
-        if @feather_count < 10 && @web_count < 10 && @rock_count < 10 && @goo_count < 10
+        if @feather_count < 5 && @web_count < 5 && @rock_count < 5 && @goo_count < 5
 					anim("You need more materials, you fuck boi!")
 				else
 					anim("Okay here's yo sword boiii")
