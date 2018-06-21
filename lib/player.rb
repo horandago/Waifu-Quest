@@ -42,6 +42,9 @@ class Player
 	  end
 	  @hp -= amount
 	  puts "You take #{amount} damage!".colorize(:red)
+		if @hp < 1
+			$player.dead
+		end
 	end
 
 	def heal(amount)

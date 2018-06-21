@@ -14,7 +14,7 @@ class Monster
 		puts "#{self.name} takes #{amount} damage!".colorize(:green)
 	end
 
-  def drop
+	def drop
 		@drop_item = items.sample
 		@drop_gold = rand(@gold_lo...@gold_hi)	
 		@grammar = ""
@@ -37,7 +37,7 @@ class Monster
 			puts "Attack\nSpell\nItem\nLook\nRun"
 			puts "----------"
 			ans = gets.chomp.downcase
-      until @fight_list.include? ans
+	    until @fight_list.include? ans
 				puts "Please type that correctly:"
 				ans = gets.chomp.downcase
 			end
@@ -52,9 +52,9 @@ class Monster
 					else
 						$inventory.list_items
 						puts "exit"
-  			  			anim("Use an item?")
-   		 				ans = gets.chomp.downcase
-   		 				$used = false
+			  			anim("Use an item?")
+	 		 				ans = gets.chomp.downcase
+	 		 				$used = false
 						$inventory.use_item_battle(ans)
 						if $used == true
 							self.action
@@ -84,27 +84,27 @@ class Monster
 						return self.fight
 					end
 					$player.spells.each {|k|
-          if ans == k.to_s.downcase
-				    if k.combat_spell == true
-              self.hurt(k.cast) 
-              break
-            else 
-              puts "You cannot cast that here" 
-            end
-				  else
-					  puts "Please type that correctly"
+	        if ans == k.to_s.downcase
+					  if k.combat_spell == true
+	            self.hurt(k.cast) 
+	            break
+	          else 
+	            puts "You cannot cast that here" 
+	          end
+					else
+						puts "Please type that correctly"
 						return self.fight
-				  end
+					end
 					}
-      end
+	    end
 			if self.hp < 1
 				anim("You defeated the #{self.name.capitalize}!")
 				$player.exp(exp)
 				self.drop
 				break
-      else
+	    else
 				self.action 	
-   		end
+	 		end
 			if $player.hp < 1
 				$player.dead
 				break

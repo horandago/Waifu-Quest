@@ -12,7 +12,7 @@ class Village < Maps
 
 	def map
     $last_village = $village
-		@move_map = [$plains]
+		@move_map = [$plains, $tavern]
 		anim("What do you want to do?")
 		puts "-----Village-----"
 		print_map_choices

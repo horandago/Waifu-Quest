@@ -45,6 +45,7 @@ class Game
 	def initialize
 		$inventory = Inventory.new
 		@current_map = $forest	
+		$last_village = $home
 	end
 
 	def play_game
