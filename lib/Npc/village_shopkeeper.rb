@@ -1,6 +1,7 @@
 require_relative '../npc.rb'
 
 class Village_shopkeeper < Npc
+  attr_reader :deny
   		POTION_COST = 25
   		MALLET_COST = 150
   		MAIL_COST = 45
